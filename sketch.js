@@ -192,9 +192,9 @@ function draw() {
 
   // ccapture
   capturer.capture(document.getElementById('defaultCanvas0'));
-  // let secondsElapsed = frameCount / 30;
-  // // if (secondsElapsed >= 4) {
-  if (frameCount % 5 == 1) {
+  let secondsElapsed = frameCount / 30;
+  if (secondsElapsed >= 15) {
+    // if (frameCount % 5 == 1) {
     capturer.stop(); capturer.save(); noLoop(); // This is optional
   }
 
