@@ -1,3 +1,6 @@
+// ccapture
+var capturer = new CCapture({ format: 'webm', framerate: 30, verbose: true });
+
 // trace, debug, info, warn, error
 let SWITCH_LOGGING_LEVEL = "info";
 // let SWITCH_LOGGING_LEVEL = "debug";
@@ -85,6 +88,7 @@ function setup() {
       origin_source["y"],
       origin_source["label"]
     ));
+
   }
 
   var canvas_mouse = Mouse.create(canvas.elt);
@@ -111,9 +115,14 @@ function setup() {
   current_particles_count = 0;
   current_co2 = 400;  // dummy value
   current_day_index = 0;
+
+  // ccapture
+  capturer.start();
+
 }
 
 function draw() {
+
   if (!data) {
     // Wait until the data has loaded before drawing.
     return;
@@ -180,4 +189,14 @@ function draw() {
   // logging.info("Number of physical bodies in the world: " + world.bodies.length);
 
   Engine.update(engine);
+
+  // ccapture
+  capturer.capture(document.getElementById('defaultCanvas0'));
+  // let secondsElapsed = frameCount / 30;
+  // // if (secondsElapsed >= 4) {
+  if (frameCount % 5 == 1) {
+    capturer.stop(); capturer.save(); noLoop(); // This is optional
+  }
+
+
 }
