@@ -41,12 +41,6 @@ let origins = [];
 let data;
 
 function preload() {
-  // for production
-  // httpGet(("https://datapaintingmother.nw.r.appspot.com/api/v1.0/tasks"), 'json', false, function(response) {
-  // for dev
-  // httpGet("http://localhost:8000/api/v1.0/tasks", 'json', false, function (response) {
-  //   data = response;
-  // });
   // direct API
   //data = loadJSON("https://global-warming.org/api/co2-api");
   // for static
@@ -76,25 +70,11 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  // matter.js ground
-  // var ground_height = 60;
-  // ground = Bodies.rectangle(
-  //   CANVAS_WIDTH / 2,
-  //   (CANVAS_HEIGHT + ground_height / 2),
-  //   (CANVAS_WIDTH + 100),
-  //   ground_height, { // mind center mode
-  //   isStatic: true
-  // }
-  // );
-  // World.add(world, [ground]);
-
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT).parent('canvasHolder');
 
   editor = new Editor();
 
-  // elements = new Particles([ball_a_data]);
   particles_physical = new Particles(particle_data);
-
 
   impediments = new Particles(impediments_data);
   impediments.create_all();
@@ -138,9 +118,7 @@ function draw() {
     // Wait until the data has loaded before drawing.
     return;
   }
-  // logging.debug(data);
 
-  // ACHTUNG - reset if too long
   // rythm of changing the day
   if (frameCount % 5 == 1) {
     current_day_index += 1;
@@ -168,7 +146,6 @@ function draw() {
   }
 
   // hygiene functions
-  // elements.drag(mouseX, mouseY);
   particles_physical.show();
   particles_physical.kill_not_needed(current_particles_count);
 
