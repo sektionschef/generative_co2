@@ -1,6 +1,3 @@
-// ccapture
-var capturer = new CCapture({ format: 'webm', framerate: 30, verbose: true });
-
 // trace, debug, info, warn, error
 let SWITCH_LOGGING_LEVEL = "info";
 // let SWITCH_LOGGING_LEVEL = "debug";
@@ -8,6 +5,8 @@ let SWITCH_LOGGING_LEVEL = "info";
 // create impediments and only show impediment layer and no other layers
 // let SWITCH_CREATE_IMPEDIMENTS = true;
 let SWITCH_CREATE_IMPEDIMENTS = false;
+
+const SWITCH_RECORD = false;
 
 // mind aspect ratio of image - and size?
 let CANVAS_WIDTH = 3840;
@@ -42,6 +41,11 @@ let on_top_image;
 let origins = [];
 
 let data;
+
+if (SWITCH_RECORD) {
+  // ccapture
+  let capturer = new CCapture({ format: 'webm', framerate: 30, verbose: false });
+}
 
 function preload() {
   // direct API
@@ -116,12 +120,17 @@ function setup() {
   current_co2 = 400;  // dummy value
   current_day_index = 0;
 
-  // ccapture
-  capturer.start();
-
 }
 
 function draw() {
+
+  if (SWITCH_RECORD) {
+    // ccapture
+    if (frameCount < 2000) {
+      // console.log("start");
+      capturer.start();
+    }
+  }
 
   if (!data) {
     // Wait until the data has loaded before drawing.
@@ -135,7 +144,7 @@ function draw() {
     current_date_string = data.co2[current_day_index].year + "-" + data.co2[current_day_index].month + "-" + data.co2[current_day_index].day;
     current_co2 = data.co2[current_day_index].trend
     current_particles_count = map(current_co2, co2_min, co2_max, min_particles, max_particles, true);
-    console.info("number of particles: " + current_particles_count)
+    // console.info("number of particles: " + current_particles_count)
 
     if (current_day_index >= data.co2.length)
       current_day_index = 0;
@@ -187,15 +196,19 @@ function draw() {
   editor.show();
 
   // logging.info("Number of physical bodies in the world: " + world.bodies.length);
+  // logging.info(frameRate);
 
   Engine.update(engine);
 
-  // ccapture
-  capturer.capture(document.getElementById('defaultCanvas0'));
-  // let secondsElapsed = frameCount / 30;
-  // if (secondsElapsed >= 15) {
-  if (frameCount % 100 == 1) {
-    capturer.stop(); capturer.save(); noLoop(); // This is optional
+  if (SWITCH_RECORD) {
+    // ccapture
+    capturer.capture(document.getElementById('defaultCanvas0'));
+    // let secondsElapsed = frameCount / 30;
+    // if (secondsElapsed >= 1) {
+    if (frameCount > 3000) {
+      // console.log("stop");
+      capturer.stop(); capturer.save(); noLoop(); // This is optional
+    }
   }
 
 
