@@ -6,8 +6,6 @@ let SWITCH_LOGGING_LEVEL = "info";
 // let SWITCH_CREATE_IMPEDIMENTS = true;
 let SWITCH_CREATE_IMPEDIMENTS = false;
 
-const SWITCH_RECORD = true;
-
 // mind aspect ratio of image - and size?
 let CANVAS_WIDTH = 3840;
 let CANVAS_HEIGHT = 2160;
@@ -121,11 +119,6 @@ function setup() {
 
 function draw() {
 
-  // if (frameCount === 1) {
-  //   // console.log("start");
-  //   capturer.start();
-  // }
-
   if (!data) {
     // Wait until the data has loaded before drawing.
     return;
@@ -195,13 +188,3 @@ function draw() {
   Engine.update(engine);
 
 
-  // if (SWITCH_RECORD) {
-  // if (frameCount < 120) {
-  //   capturer.capture(document.getElementById('defaultCanvas0'));
-  // } else {
-  //   capturer.save();
-  //   capturer.stop();
-  // }
-  // // let secondsElapsed = frameCount / 30;
-  // // if (secondsElapsed >= 1) {
-}
