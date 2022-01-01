@@ -6,7 +6,7 @@ let SWITCH_LOGGING_LEVEL = "info";
 // let SWITCH_CREATE_IMPEDIMENTS = true;
 let SWITCH_CREATE_IMPEDIMENTS = false;
 
-const SWITCH_RECORD = false;
+const SWITCH_RECORD = true;
 
 // mind aspect ratio of image - and size?
 let CANVAS_WIDTH = 3840;
@@ -42,11 +42,6 @@ let origins = [];
 
 let data;
 
-if (SWITCH_RECORD) {
-  // ccapture
-  let capturer = new CCapture({ format: 'webm', framerate: 30, verbose: false });
-}
-
 function preload() {
   // direct API
   //data = loadJSON("https://global-warming.org/api/co2-api");
@@ -68,6 +63,7 @@ function preload() {
   for (let particle of particle_data) {
     particle.image = loadImage(particle.image_path)
   }
+
 }
 
 function setup() {
@@ -101,7 +97,8 @@ function setup() {
   World.add(world, mConstraint);
 
   // matter.js stuff
-  Engine.run(engine);
+  // Engine.run(engine);
+  Matter.Runner.run(engine)
 
   // engine.world.gravity.y = 1;
   // engine.world.gravity.y = -1;
@@ -124,13 +121,10 @@ function setup() {
 
 function draw() {
 
-  if (SWITCH_RECORD) {
-    // ccapture
-    if (frameCount < 2000) {
-      // console.log("start");
-      capturer.start();
-    }
-  }
+  // if (frameCount === 1) {
+  //   // console.log("start");
+  //   capturer.start();
+  // }
 
   if (!data) {
     // Wait until the data has loaded before drawing.
@@ -200,16 +194,14 @@ function draw() {
 
   Engine.update(engine);
 
-  if (SWITCH_RECORD) {
-    // ccapture
-    capturer.capture(document.getElementById('defaultCanvas0'));
-    // let secondsElapsed = frameCount / 30;
-    // if (secondsElapsed >= 1) {
-    if (frameCount > 3000) {
-      // console.log("stop");
-      capturer.stop(); capturer.save(); noLoop(); // This is optional
-    }
-  }
 
-
+  // if (SWITCH_RECORD) {
+  // if (frameCount < 120) {
+  //   capturer.capture(document.getElementById('defaultCanvas0'));
+  // } else {
+  //   capturer.save();
+  //   capturer.stop();
+  // }
+  // // let secondsElapsed = frameCount / 30;
+  // // if (secondsElapsed >= 1) {
 }
