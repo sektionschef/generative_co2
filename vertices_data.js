@@ -2442,7 +2442,7 @@ const origins_data = [
 const particle_data = [
   {
     label: "particle_1",
-    image_path: "assets/brushstroke_1.png",
+    image_path: "./brushstroke_1.png",
     position: {
       x: 0,
       y: 0,
@@ -2467,7 +2467,7 @@ const particle_data = [
   },
   {
     label: "particle_2",
-    image_path: "assets/brushstroke_2.png",
+    image_path: "./brushstroke_2.png",
     position: {
       x: 0,
       y: 0,
@@ -2492,7 +2492,7 @@ const particle_data = [
   },
   {
     label: "particle_3",
-    image_path: "assets/brushstroke_3.png",
+    image_path: "./brushstroke_3.png",
     position: {
       x: 0,
       y: 0,
@@ -2517,7 +2517,7 @@ const particle_data = [
   },
   {
     label: "particle_4",
-    image_path: "assets/brushstroke_4.png",
+    image_path: "./brushstroke_4.png",
     position: {
       x: 0,
       y: 0,
@@ -2542,7 +2542,7 @@ const particle_data = [
   },
   {
     label: "particle_5",
-    image_path: "assets/brushstroke_5.png",
+    image_path: "./brushstroke_5.png",
     position: {
       x: 0,
       y: 0,
@@ -2567,7 +2567,7 @@ const particle_data = [
   },
   {
     label: "particle_6",
-    image_path: "assets/brushstroke_6.png",
+    image_path: "./brushstroke_6.png",
     position: {
       x: 0,
       y: 0,
@@ -2592,7 +2592,7 @@ const particle_data = [
   },
   {
     label: "particle_7",
-    image_path: "assets/brushstroke_7.png",
+    image_path: "./brushstroke_7.png",
     position: {
       x: 0,
       y: 0,
@@ -2617,7 +2617,7 @@ const particle_data = [
   },
   {
     label: "particle_8",
-    image_path: "assets/brushstroke_8.png",
+    image_path: "./brushstroke_8.png",
     position: {
       x: 0,
       y: 0,
@@ -2642,7 +2642,7 @@ const particle_data = [
   },
   {
     label: "particle_9",
-    image_path: "assets/brushstroke_9.png",
+    image_path: "./brushstroke_9.png",
     position: {
       x: 0,
       y: 0,
@@ -2667,7 +2667,7 @@ const particle_data = [
   },
   {
     label: "particle_10",
-    image_path: "assets/brushstroke_10.png",
+    image_path: "./brushstroke_10.png",
     position: {
       x: 0,
       y: 0,
