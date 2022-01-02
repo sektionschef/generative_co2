@@ -9,9 +9,7 @@ The digital painting visualizes the increasing CO² concentration in the earth's
 
 ## Tasks
 * gif
-* update html tags and title and description
 * fine tune bodies and engstellen
-* check for errors new loop
 * mint
 * eigene html Seite mit Projekt
 * artistpage mit allen links - 
@@ -25,6 +23,6 @@ The digital painting visualizes the increasing CO² concentration in the earth's
 * enable rulers in Krita
 
 
-## record animation with CCapture
+# guide for minting
 
-* video tutorial: https://www.youtube.com/watch?v=-JkGPCQVYf0 
+https://github.com/hicetnunc2000/hicetnunc/wiki/Interactive-OBJKTs
