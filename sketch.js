@@ -39,6 +39,9 @@ let on_top_image;
 let origins = [];
 
 let data;
+let scaling_factor = 0.5;
+let rescaling_width;
+let rescaling_height;
 
 function preload() {
   // direct API
@@ -65,13 +68,14 @@ function preload() {
 }
 
 function setup() {
+  resize_canvas();
   logging.setLevel(SWITCH_LOGGING_LEVEL);
 
   // matter.js stuff
   engine = Engine.create();
   world = engine.world;
 
-  var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT).parent('canvasHolder');
+  var canvas = createCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor).parent('canvasHolder');
 
   editor = new Editor();
 
@@ -114,10 +118,11 @@ function setup() {
   current_particles_count = 0;
   current_co2 = 400;  // dummy value
   current_day_index = 0;
-
 }
 
 function draw() {
+  resize_canvas();
+  background("black");
 
   if (!data) {
     // Wait until the data has loaded before drawing.
@@ -186,6 +191,5 @@ function draw() {
   // logging.info(frameRate);
 
   Engine.update(engine);
-
 }
 

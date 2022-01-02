@@ -22,7 +22,7 @@ function mousePressed() {
 
   if (keyIsPressed) {
     if (keyCode == SHIFT) {
-      print(" New vertex with " + mouseX + " : " + mouseY);
+      // print(" New vertex with " + mouseX + " : " + mouseY);
       editor.vertices_text += ("{x: " + mouseX + ", y: " + mouseY + "},\n");
       editor.markers.push({ x: mouseX, y: mouseY });
     }
@@ -31,4 +31,25 @@ function mousePressed() {
 
 function mouseReleased() {
   impediments.undrag();
+}
+
+
+function windowResized() {
+  resize_canvas();
+}
+
+function resize_canvas() {
+  rescaling_width = windowWidth / CANVAS_WIDTH
+  rescaling_height = windowHeight / CANVAS_HEIGHT
+
+  if (rescaling_width < rescaling_height) {
+    scaling_factor = rescaling_width
+  } else {
+    scaling_factor = rescaling_height
+  }
+  // resizeCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor);
+  scale(scaling_factor);
+
+  // logging.info("rescaling width: " + rescaling_width + " new width: " + CANVAS_WIDTH * scaling_factor);
+  // logging.info("rescaling height: " + rescaling_height + " new height: " + CANVAS_HEIGHT * scaling_factor);
 }
