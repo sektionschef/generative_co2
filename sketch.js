@@ -1,10 +1,10 @@
 // trace, debug, info, warn, error
-// let SWITCH_LOGGING_LEVEL = "info";
-let SWITCH_LOGGING_LEVEL = "debug";
+let SWITCH_LOGGING_LEVEL = "info";
+// let SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
-let SWITCH_CREATE_IMPEDIMENTS = true;
-// let SWITCH_CREATE_IMPEDIMENTS = false;
+// let SWITCH_CREATE_IMPEDIMENTS = true;
+let SWITCH_CREATE_IMPEDIMENTS = false;
 
 // mind aspect ratio of image - and size?
 let CANVAS_WIDTH = 3840;

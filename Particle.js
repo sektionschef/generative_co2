@@ -99,6 +99,7 @@ class Particle {
   show_sprite() {
     this.physical_centre = Matter.Vertices.centre(this.physical_body.vertices);  // recalculate
 
+    // needs scaling factor probably.
     // if dragged the lead comes from attractive shape, if not from physical body
     if (this.dragged) {
       Body.translate(
@@ -131,8 +132,8 @@ class Particle {
 
       image(
         this.sprite,
-        this.offsetPhysical.x,
-        this.offsetPhysical.y,
+        this.offsetPhysical.x * scaling_factor,
+        this.offsetPhysical.y * scaling_factor,
         this.sprite.width * scaling_factor,
         this.sprite.height * scaling_factor,
       );
@@ -345,8 +346,8 @@ class Particles {
 
     // correct for difference between top left and centre
     let position_corrected = {
-      x: position.x + chosen_building_plan.offsetPhysical.x,
-      y: position.y + chosen_building_plan.offsetPhysical.y,
+      x: position.x + chosen_building_plan.offsetPhysical.x * scaling_factor,
+      y: position.y + chosen_building_plan.offsetPhysical.y * scaling_factor,
     }
 
     this.bodies.push(new Particle(

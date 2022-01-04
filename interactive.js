@@ -73,9 +73,6 @@ function resize_canvas() {
   impediments.bodies = []
   impediments.create_all();
   impediments.rescale();
-  // for (let impediment of impediments.bodies) {
-  //   Body.translate(impediment.physical_body, { x: -50, y: -30 });
-  // }
 
 
   // own class
@@ -92,12 +89,3 @@ function resize_canvas() {
   // resizeCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor);
   // scale(scaling_factor);
 }
-
-
-// function multiply(array) {
-//   var sum = 1;
-//   for (var i = 0; i < array.length; i++) {
-//     sum = sum * array[i];
-//   }
-//   return sum;
-// }
