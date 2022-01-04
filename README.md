@@ -8,6 +8,9 @@ The digital painting visualizes the increasing CO² concentration in the earth's
 
 
 ## Tasks
+* remove not only attractive but also physical at resize
+* rework canvas limits where to kill
+* rework mouse constraints
 * gif
 * fine tune bodies and engstellen
 * mint

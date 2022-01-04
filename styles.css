@@ -24,9 +24,9 @@ html {
 body {
 	flex-direction: row;
 	overflow: hidden;
-    touch-action: none;
+    touch-action: none; */
 	/*background: radial-gradient(#efefef, #000000);*/
-	background: black;
+	/* background: black;
 }
 
 canvas {
@@ -41,4 +41,10 @@ canvas {
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+} */
+
+/* #defaultCanvas0 {
+	width: 1920px !important;
+	height: 1080px !important;
+	transform: scale(0.5);
 } */

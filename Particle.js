@@ -41,7 +41,7 @@ class Particle {
       y: 0
     }
 
-    // if body with sprite or a static body without sprite
+    // if body with sprite or a static body without sprite (if impediment is painted on canvas)
     if ((typeof sprite !== "undefined") || (typeof options !== "undefined" && options.isStatic == true)) {
       this.sprite = sprite;
 
@@ -66,6 +66,9 @@ class Particle {
         y: (- this.offsetPhysical.y)
       });
 
+      // save for scaling
+      // this.origin_physical_body = this.physical_body
+
     } else {
       // print(this.radius);
       // https://brm.io/matter-js/docs/classes/Bodies.html
@@ -86,7 +89,6 @@ class Particle {
 
   show() {
     // body with sprite
-
     if (typeof this.sprite !== 'undefined') {
       this.show_sprite();
     } else {
@@ -118,7 +120,9 @@ class Particle {
       image(
         this.sprite,
         this.attractivePosition.x,
-        this.attractivePosition.y
+        this.attractivePosition.y,
+        this.sprite.width * scaling_factor,
+        this.sprite.height * scaling_factor,
       );
     } else {
       // rotate around the physical centre but show the sprite on top left thus using the offset
@@ -128,12 +132,12 @@ class Particle {
       image(
         this.sprite,
         this.offsetPhysical.x,
-        this.offsetPhysical.y
+        this.offsetPhysical.y,
+        this.sprite.width * scaling_factor,
+        this.sprite.height * scaling_factor,
       );
-
     }
     pop();
-
 
     if (logging.getLevel() <= 1) {
 
@@ -163,6 +167,53 @@ class Particle {
 
 
     }
+  }
+
+  // SCALING FACTORs als globla oder parameter??
+  rescale_physical_body() {
+    // console.log(this.physical_body.vertices);
+    // let scaled_vertices = [];
+    // for (let vertex of this.physical_body.vertices) {
+    //   // console.log(vertex)
+    //   scaled_vertices.push(
+    //     {
+    //       x: vertex.x * scaling_factor,
+    //       y: vertex.y * scaling_factor,
+    //     }
+    //   )
+    // }
+
+    // old
+    // this.vertices_before_last_resize = this.physical_body.vertices
+
+    // for (var i = 0; i < this.physical_body.vertices.length; i++) {
+    //   this.physical_body.vertices[i].x = this.origin_physical_body.vertices[i].x * scaling_factor;
+    //   this.physical_body.vertices[i].y = this.origin_physical_body.vertices[i].y * scaling_factor;
+    // }
+
+    // let current_scaling_factor = 1 / multiply(scaling_factor_history) * scaling_factor
+
+    let centre_x_before = this.physical_centre.x;
+    let centre_y_before = this.physical_centre.y;
+
+    // scale recalculates physics of body autmoaticall (e.g. centre), from origin's perspective: x: 0, y: 0
+    // Body.scale(this.physical_body, scaling_factor, scaling_factor, { x: 0, y: 0 });
+    Body.scale(this.physical_body, scaling_factor, scaling_factor);
+    // Body.scale(this.physical_body, current_scaling_factor, current_scaling_factor, { x: 0, y: 0 });
+
+    // since also the canvas resized, there should also be a new position - for dynamic bodies, just erase them and recreate
+    if (this.physical_body.isStatic) {
+
+      let new_position_x = centre_x_before * scaling_factor;
+      let new_position_y = centre_y_before * scaling_factor;
+
+      let correction_x = new_position_x - centre_x_before;
+      let correction_y = new_position_y - centre_y_before;
+
+      // console.log(correction_x);
+      Body.translate(this.physical_body, { x: correction_x, y: correction_y });
+    }
+    this.physical_centre = Matter.Vertices.centre(this.physical_body.vertices);
   }
 
   remove_physical_body() {
@@ -229,8 +280,8 @@ class Particle {
     rect(
       this.effectiveTopLeftPostion.x,
       this.effectiveTopLeftPostion.y,
-      this.sprite.width,
-      this.sprite.height
+      this.sprite.width * scaling_factor,  // smaller
+      this.sprite.height * scaling_factor // smaller
     );
     pop();
   }
@@ -259,7 +310,7 @@ class Particle {
     push();
     fill(255, 0, 0);
     // textFont("Helvetica");
-    textSize(20);
+    textSize(10);
     // textAlign(CENTER, CENTER);
     text(this.physical_body.label, (this.physical_centre.x + 10), (this.physical_centre.y - 10));
     pop();
@@ -307,6 +358,9 @@ class Particles {
       chosen_building_plan.offsetPhysical,
       chosen_building_plan.label,
     ));
+
+    // console.log(this.bodies[(this.bodies.length - 1)]);
+    this.bodies[(this.bodies.length - 1)].rescale_physical_body();
   }
   // add_single(position, options, label) {  // all same particles
   //   this.bodies.push(new Particle(
@@ -315,10 +369,12 @@ class Particles {
   //     label = label,
   //   ));
   // }
+
   kill_not_needed(max_number) {
     this.kill_all_outside_canvas();
     this.kill_too_many(max_number);
   }
+  // NEEEDs RESIZE UPDATE
   kill_all_outside_canvas() {
     let safety_distance = 50;
     for (let i = this.bodies.length - 1; i >= 0; i--) {
@@ -361,7 +417,6 @@ class Particles {
     }
   }
   show() {
-
     // remove the dead
     this.bodies = this.bodies.filter(function (value, index, arr) {
       return value.aliveFlag == true;
@@ -374,13 +429,14 @@ class Particles {
       // console.log(particle);
     }
   }
-  print() {
-    logging.info(this.bodies)
+  rescale() {
+    for (let particle of this.bodies) {
+      particle.rescale_physical_body();
+    }
+  }
+  kill_all() {
+    for (let particle of this.bodies) {
+      particle.remove_physical_body();
+    }
   }
 }
-
-// move_attractive_shapes() {
-//   for (let particle of this.bodies) {
-//     particle.move_attractive_shape();
-//   }
-// }

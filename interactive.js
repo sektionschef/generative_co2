@@ -1,18 +1,28 @@
 function keyPressed() {
   if (key === 'P') {
-    print("result")
-    print(editor.vertices_text);
+    console.log("result")
+    console.log(editor.vertices_text);
     editor.vertices_text = "";
     editor.markers = [];
   } else if (key === 'a') {  // add body
-    elements.add_single();
+    // elements.add_single();
+    // particles_physical.particles_physical.add_single_sprite({ x: mouseX, y: mouseY })
+
+    element = Bodies.circle(mouseX, mouseY, 7);
+
+    // calculate the centre of mass for the physical body
+    element.centre = Matter.Vertices.centre(element.vertices);
+    // this.inertia = this.physical_body.inertia;
+
+    World.add(world, element)
+
   } else if (key == "r") {  // remove body
     if (elements.bodies.length != 0) {
       elements.bodies[0].remove_physical_body()
     }
   } else if (key === 'l') {
     // Body.translate(wing_a.physical_body, {x: 300, y: 60});
-    print(world);
+    console.log(world);
   }
 }
 
@@ -33,11 +43,15 @@ function mouseReleased() {
   impediments.undrag();
 }
 
-
+// each time window.innerWidth and Height are resized
 function windowResized() {
+  logging.info("RESIZE");
   resize_canvas();
+  // logging.info("rescaling width: " + rescaling_width + " new width: " + CANVAS_WIDTH * scaling_factor);
+  // logging.info("rescaling height: " + rescaling_height + " new height: " + CANVAS_HEIGHT * scaling_factor);
 }
 
+// calculate the scaling params
 function resize_canvas() {
   rescaling_width = windowWidth / CANVAS_WIDTH
   rescaling_height = windowHeight / CANVAS_HEIGHT
@@ -47,9 +61,43 @@ function resize_canvas() {
   } else {
     scaling_factor = rescaling_height
   }
-  // resizeCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor);
-  scale(scaling_factor);
 
-  // logging.info("rescaling width: " + rescaling_width + " new width: " + CANVAS_WIDTH * scaling_factor);
-  // logging.info("rescaling height: " + rescaling_height + " new height: " + CANVAS_HEIGHT * scaling_factor);
+  // scaling_factor_history.push(scaling_factor);
+  // logging.info(scaling_factor_history);
+
+  particles_physical.kill_all();
+  particles_physical.bodies = [];
+
+  // reboot - since scaling in physical world is only possible relative to the preceding body.
+  impediments.kill_all();
+  impediments.bodies = []
+  impediments.create_all();
+  impediments.rescale();
+  // for (let impediment of impediments.bodies) {
+  //   Body.translate(impediment.physical_body, { x: -50, y: -30 });
+  // }
+
+
+  // own class
+  origins = [];
+  for (let origin_source of origins_data) {
+    origins.push(new Origin(
+      origin_source["x"],
+      origin_source["y"],
+      origin_source["label"]
+    ));
+  }
+
+  // old stuff just for p5.js
+  // resizeCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor);
+  // scale(scaling_factor);
 }
+
+
+// function multiply(array) {
+//   var sum = 1;
+//   for (var i = 0; i < array.length; i++) {
+//     sum = sum * array[i];
+//   }
+//   return sum;
+// }

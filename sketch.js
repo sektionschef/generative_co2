@@ -1,10 +1,10 @@
 // trace, debug, info, warn, error
-let SWITCH_LOGGING_LEVEL = "info";
-// let SWITCH_LOGGING_LEVEL = "debug";
+// let SWITCH_LOGGING_LEVEL = "info";
+let SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
-// let SWITCH_CREATE_IMPEDIMENTS = true;
-let SWITCH_CREATE_IMPEDIMENTS = false;
+let SWITCH_CREATE_IMPEDIMENTS = true;
+// let SWITCH_CREATE_IMPEDIMENTS = false;
 
 // mind aspect ratio of image - and size?
 let CANVAS_WIDTH = 3840;
@@ -39,9 +39,12 @@ let on_top_image;
 let origins = [];
 
 let data;
-let scaling_factor = 0.5;
+let scaling_factor = 1;
+let scaling_factor_history = [];
 let rescaling_width;
 let rescaling_height;
+
+let element = [];
 
 function preload() {
   // direct API
@@ -52,7 +55,6 @@ function preload() {
   underneath_image = loadImage("./franziskaner_underneath.png");
   impediments_image = loadImage("./franziskaner_only_impediments.png");  // for defining impediments
   on_top_image = loadImage("./franziskaner_on_top.png");
-
 
   // loop through data and load all the images to the json
   for (let impediment of impediments_data) {
@@ -68,7 +70,6 @@ function preload() {
 }
 
 function setup() {
-  resize_canvas();
   logging.setLevel(SWITCH_LOGGING_LEVEL);
 
   // matter.js stuff
@@ -90,7 +91,6 @@ function setup() {
       origin_source["y"],
       origin_source["label"]
     ));
-
   }
 
   var canvas_mouse = Mouse.create(canvas.elt);
@@ -118,10 +118,15 @@ function setup() {
   current_particles_count = 0;
   current_co2 = 400;  // dummy value
   current_day_index = 0;
+
+  resize_canvas();
+
+  // dummy
+  element.centre = { x: 500, y: 500 };
 }
 
 function draw() {
-  resize_canvas();
+  // resize_canvas();
   background("black");
 
   if (!data) {
@@ -131,6 +136,9 @@ function draw() {
 
   // rythm of changing the day
   if (frameCount % 5 == 1) {
+    if (current_day_index >= data.co2.length)
+      current_day_index = 0;
+
     current_day_index += 1;
     data.co2[current_day_index]
     current_date_string = data.co2[current_day_index].year + "-" + data.co2[current_day_index].month + "-" + data.co2[current_day_index].day;
@@ -138,16 +146,14 @@ function draw() {
     current_particles_count = map(current_co2, co2_min, co2_max, min_particles, max_particles, true);
     // console.info("number of particles: " + current_particles_count)
 
-    if (current_day_index >= data.co2.length)
-      current_day_index = 0;
   }
 
   // layers
   if (SWITCH_CREATE_IMPEDIMENTS == false) {
-    image(underneath_image, 0, 0);
+    image(underneath_image, 0, 0, underneath_image.width * scaling_factor, underneath_image.height * scaling_factor);
   } else {
     background(255);
-    image(impediments_image, 0, 0);
+    image(impediments_image, 0, 0, impediments_image.width * scaling_factor, impediments_image.height * scaling_factor);
   }
 
   //eventuell eigene Origins Klasse
@@ -159,12 +165,30 @@ function draw() {
   particles_physical.show();
   particles_physical.kill_not_needed(current_particles_count);
 
+  // dummy
+  // circle(element.centre.x, element.centre.y, 20);
+  if (element.centre.x != 500) {
+    push();
+    fill(120, 255, 255);
+    noStroke()
+    beginShape();
+    for (var i = 0; i < element.vertices.length; i++) {
+      vertex(element.vertices[i].x, element.vertices[i].y);
+    }
+    endShape(CLOSE);
+    // translate(this.physical_body.position.x, this.physical_body.position.y);
+    // ellipse(0, 0, this.radius * 2);
+    pop();
+  }
+
+
+
   impediments.drag(mouseX, mouseY);
   impediments.show();
 
   if (SWITCH_CREATE_IMPEDIMENTS == false) {
-    image(impediments_image, 0, 0);
-    image(on_top_image, 0, 0);
+    image(impediments_image, 0, 0, impediments_image.width * scaling_factor, impediments_image.height * scaling_factor);
+    image(on_top_image, 0, 0, on_top_image.width * scaling_factor, on_top_image.height * scaling_factor);
 
     // label
     let co2_string = current_co2 + ' ppm CO² in atmosphere'
@@ -173,9 +197,9 @@ function draw() {
     fill(50);
     // stroke(200);
     // textFont("Helvetica");
-    textSize(25);
-    text(current_date_string, 3430, 2100);
-    text(co2_string, 3320, 2130);
+    textSize(25 * scaling_factor);
+    text(current_date_string, 3430 * scaling_factor, 2100 * scaling_factor);
+    text(co2_string, 3320 * scaling_factor, 2130 * scaling_factor);
     pop();
   }
 

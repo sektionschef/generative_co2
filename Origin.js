@@ -5,12 +5,14 @@ class Origin {
         this.position_y = Math.abs(position_y);
         this.label = label;
 
+        this.position_x = this.position_x * scaling_factor;
+        this.position_y = this.position_y * scaling_factor;
+
         this.position = { x: this.position_x, y: this.position_y }
     }
 
     drop() {
         if (frameCount % this.framecount == 1) {
-            // particles_physical.add_single(this.position, this.options_particles_physical, "CO² bubble")
             particles_physical.add_single_sprite(this.position);
         }
     }
@@ -18,7 +20,7 @@ class Origin {
     draw_origin_positions_debug() {
         // print(this.position.x);
         push();
-        strokeWeight(20);
+        strokeWeight(10);
         stroke(0, 0, 255);  // blue
         point(
             this.position.x,
@@ -29,7 +31,7 @@ class Origin {
         push();
         fill(0, 0, 255);
         // textFont("Helvetica");
-        textSize(30);
+        textSize(20);
         // textAlign(CENTER, CENTER);
         text(this.label, (this.position.x + 10), (this.position.y - 10));
         pop();
