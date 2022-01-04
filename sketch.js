@@ -6,7 +6,7 @@ let SWITCH_LOGGING_LEVEL = "info";
 // let SWITCH_CREATE_IMPEDIMENTS = true;
 let SWITCH_CREATE_IMPEDIMENTS = false;
 
-// mind aspect ratio of image - and size?
+// mind aspect ratio of image - default resolution
 let CANVAS_WIDTH = 3840;
 let CANVAS_HEIGHT = 2160;
 
@@ -15,6 +15,8 @@ let max_particles = 2000;
 let current_particles_count;
 let current_co2;
 let current_day_index;
+
+let vertical_gravity = -0.25;
 
 // matter.js stuff
 var Engine = Matter.Engine;
@@ -31,7 +33,6 @@ var engine;
 var world;
 var ground;
 
-
 let underneath_image;
 let impediments_image;
 let on_top_image;
@@ -40,7 +41,6 @@ let origins = [];
 
 let data;
 let scaling_factor = 1;
-let scaling_factor_history = [];
 let rescaling_width;
 let rescaling_height;
 
@@ -99,13 +99,8 @@ function setup() {
   World.add(world, mConstraint);
 
   // matter.js stuff
-  // Engine.run(engine);
   Matter.Runner.run(engine)
-
-  // engine.world.gravity.y = 1;
-  // engine.world.gravity.y = -1;
-  engine.world.gravity.y = -0.25;
-  // engine.world.gravity.y = -0.05;
+  engine.world.gravity.y = vertical_gravity;
 
   // calculate max of co2 data
   let data_trend = [];
@@ -121,12 +116,11 @@ function setup() {
 
   resize_canvas();
 
-  // dummy
+  // dummy 
   element.centre = { x: 500, y: 500 };
 }
 
 function draw() {
-  // resize_canvas();
   background("black");
 
   if (!data) {
@@ -144,7 +138,7 @@ function draw() {
     current_date_string = data.co2[current_day_index].year + "-" + data.co2[current_day_index].month + "-" + data.co2[current_day_index].day;
     current_co2 = data.co2[current_day_index].trend
     current_particles_count = map(current_co2, co2_min, co2_max, min_particles, max_particles, true);
-    // console.info("number of particles: " + current_particles_count)
+    // console.debug("number of particles: " + current_particles_count)
 
   }
 
@@ -166,7 +160,6 @@ function draw() {
   particles_physical.kill_not_needed(current_particles_count);
 
   // dummy
-  // circle(element.centre.x, element.centre.y, 20);
   if (element.centre.x != 500) {
     push();
     fill(120, 255, 255);
@@ -181,8 +174,6 @@ function draw() {
     pop();
   }
 
-
-
   impediments.drag(mouseX, mouseY);
   impediments.show();
 
@@ -192,7 +183,6 @@ function draw() {
 
     // label
     let co2_string = current_co2 + ' ppm CO² in atmosphere'
-
     push();
     fill(50);
     // stroke(200);
@@ -211,8 +201,7 @@ function draw() {
 
   editor.show();
 
-  // logging.info("Number of physical bodies in the world: " + world.bodies.length);
-  // logging.info(frameRate);
+  // logging.debug("Number of physical bodies in the world: " + world.bodies.length);
 
   Engine.update(engine);
 }

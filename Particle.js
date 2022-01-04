@@ -28,8 +28,6 @@ class Particle {
     };
     this.dragged = false;
 
-    // this.hue = color("#855839");
-    // this.hue = color(133, 88, 57, 200);
     // add opacity
     this.hue = color(random(["#bca796", "#20201e", "#a3a5a4", "#c1cad6", "#855839"]));
     this.radius = random(15, 20);
@@ -66,9 +64,6 @@ class Particle {
         y: (- this.offsetPhysical.y)
       });
 
-      // save for scaling
-      // this.origin_physical_body = this.physical_body
-
     } else {
       // print(this.radius);
       // https://brm.io/matter-js/docs/classes/Bodies.html
@@ -99,20 +94,19 @@ class Particle {
   show_sprite() {
     this.physical_centre = Matter.Vertices.centre(this.physical_body.vertices);  // recalculate
 
-    // needs scaling factor probably.
     // if dragged the lead comes from attractive shape, if not from physical body
     if (this.dragged) {
       Body.translate(
         this.physical_body, {
         // not absolute position but change
-        x: (this.effectiveTopLeftPostion.x - this.physical_centre.x - this.offsetPhysical.x),
-        y: (this.effectiveTopLeftPostion.y - this.physical_centre.y - this.offsetPhysical.y)
+        x: (this.effectiveTopLeftPostion.x - this.physical_centre.x - this.offsetPhysical.x * scaling_factor),
+        y: (this.effectiveTopLeftPostion.y - this.physical_centre.y - this.offsetPhysical.y * scaling_factor)
       }
       );
     } else {
       this.effectiveTopLeftPostion = {
-        x: (this.physical_centre.x + this.offsetPhysical.x),
-        y: (this.physical_centre.y + this.offsetPhysical.y)
+        x: (this.physical_centre.x + this.offsetPhysical.x * scaling_factor),
+        y: (this.physical_centre.y + this.offsetPhysical.y * scaling_factor)
       }
     }
 
@@ -162,52 +156,29 @@ class Particle {
         vertex(this.physical_body.vertices[i].x, this.physical_body.vertices[i].y);
       }
       endShape(CLOSE);
-      // translate(this.physical_body.position.x, this.physical_body.position.y);
-      // ellipse(0, 0, this.radius * 2);
       pop();
 
 
     }
   }
 
-  // SCALING FACTORs als globla oder parameter??
+  // SCALING FACTORs als global oder parameter??
   rescale_physical_body() {
-    // console.log(this.physical_body.vertices);
-    // let scaled_vertices = [];
-    // for (let vertex of this.physical_body.vertices) {
-    //   // console.log(vertex)
-    //   scaled_vertices.push(
-    //     {
-    //       x: vertex.x * scaling_factor,
-    //       y: vertex.y * scaling_factor,
-    //     }
-    //   )
-    // }
-
-    // old
-    // this.vertices_before_last_resize = this.physical_body.vertices
-
-    // for (var i = 0; i < this.physical_body.vertices.length; i++) {
-    //   this.physical_body.vertices[i].x = this.origin_physical_body.vertices[i].x * scaling_factor;
-    //   this.physical_body.vertices[i].y = this.origin_physical_body.vertices[i].y * scaling_factor;
-    // }
-
-    // let current_scaling_factor = 1 / multiply(scaling_factor_history) * scaling_factor
 
     let centre_x_before = this.physical_centre.x;
     let centre_y_before = this.physical_centre.y;
 
-    // scale recalculates physics of body autmoaticall (e.g. centre), from origin's perspective: x: 0, y: 0
-    // Body.scale(this.physical_body, scaling_factor, scaling_factor, { x: 0, y: 0 });
+    // scale recalculates physics of body automatically (e.g. centre, mass and so on)
     Body.scale(this.physical_body, scaling_factor, scaling_factor);
-    // Body.scale(this.physical_body, current_scaling_factor, current_scaling_factor, { x: 0, y: 0 });
 
     // since also the canvas resized, there should also be a new position - for dynamic bodies, just erase them and recreate
     if (this.physical_body.isStatic) {
 
+      // calculate the new position after applying the resize
       let new_position_x = centre_x_before * scaling_factor;
       let new_position_y = centre_y_before * scaling_factor;
 
+      // calculate the difference for the translate function
       let correction_x = new_position_x - centre_x_before;
       let correction_y = new_position_y - centre_y_before;
 
@@ -360,9 +331,10 @@ class Particles {
       chosen_building_plan.label,
     ));
 
-    // console.log(this.bodies[(this.bodies.length - 1)]);
+    // rescale the newly created body
     this.bodies[(this.bodies.length - 1)].rescale_physical_body();
   }
+
   // add_single(position, options, label) {  // all same particles
   //   this.bodies.push(new Particle(
   //     position = position,
@@ -375,15 +347,14 @@ class Particles {
     this.kill_all_outside_canvas();
     this.kill_too_many(max_number);
   }
-  // NEEEDs RESIZE UPDATE
+
   kill_all_outside_canvas() {
-    let safety_distance = 50;
     for (let i = this.bodies.length - 1; i >= 0; i--) {
       if (
-        (this.bodies[i].physical_body.position.x < (0 - safety_distance)) ||
-        (this.bodies[i].physical_body.position.x > (width + safety_distance)) ||
-        (this.bodies[i].physical_body.position.y < 0 - safety_distance) ||
-        (this.bodies[i].physical_body.position.y > (height + safety_distance))
+        (this.bodies[i].physical_body.position.x < 0) ||
+        (this.bodies[i].physical_body.position.x > width) ||
+        (this.bodies[i].physical_body.position.y < 0) ||
+        (this.bodies[i].physical_body.position.y > height)
       ) {
         // console.log("outside!")
         this.bodies[i].remove_physical_body();

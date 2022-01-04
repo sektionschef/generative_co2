@@ -8,11 +8,12 @@ The digital painting visualizes the increasing CO² concentration in the earth's
 
 
 ## Tasks
-* remove not only attractive but also physical at resize
-* rework canvas limits where to kill
+* dummy ball to drop for debugging
+* resizes debugging texts and so on
+* remove all attractive and physical bodies: "// NECESSARY FOR ATTRACITVE SHAPES???"
 * rework mouse constraints
 * gif
-* fine tune bodies and engstellen
+* fine tune bodies and engstellen - gesammelte parameter für alle particles und impediments
 * mint
 * eigene html Seite mit Projekt
 * artistpage mit allen links - 

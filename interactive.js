@@ -43,15 +43,15 @@ function mouseReleased() {
   impediments.undrag();
 }
 
-// each time window.innerWidth and Height are resized
+// each time window.innerWidth
 function windowResized() {
-  logging.info("RESIZE");
+  logging.debug("Window is resized -> resizing canvas.");
   resize_canvas();
-  // logging.info("rescaling width: " + rescaling_width + " new width: " + CANVAS_WIDTH * scaling_factor);
-  // logging.info("rescaling height: " + rescaling_height + " new height: " + CANVAS_HEIGHT * scaling_factor);
+  // logging.debug("rescaling width: " + rescaling_width + " new width: " + CANVAS_WIDTH * scaling_factor);
+  // logging.debug("rescaling height: " + rescaling_height + " new height: " + CANVAS_HEIGHT * scaling_factor);
 }
 
-// calculate the scaling params
+// calculate the scaling params - choose the limiting factor either height or width
 function resize_canvas() {
   rescaling_width = windowWidth / CANVAS_WIDTH
   rescaling_height = windowHeight / CANVAS_HEIGHT
@@ -61,9 +61,6 @@ function resize_canvas() {
   } else {
     scaling_factor = rescaling_height
   }
-
-  // scaling_factor_history.push(scaling_factor);
-  // logging.info(scaling_factor_history);
 
   particles_physical.kill_all();
   particles_physical.bodies = [];
@@ -85,7 +82,5 @@ function resize_canvas() {
     ));
   }
 
-  // old stuff just for p5.js
-  // resizeCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor);
-  // scale(scaling_factor);
+  resizeCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor);
 }
