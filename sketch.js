@@ -188,7 +188,9 @@ function draw() {
     // stroke(200);
     // textFont("Helvetica");
     textSize(25 * scaling_factor);
+    textStyle(BOLD);
     text(current_date_string, 3430 * scaling_factor, 2100 * scaling_factor);
+    textStyle(NORMAL);
     text(co2_string, 3320 * scaling_factor, 2130 * scaling_factor);
     pop();
   }
