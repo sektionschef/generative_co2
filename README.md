@@ -8,8 +8,9 @@ The digital painting visualizes the increasing CO² concentration in the earth's
 
 
 ## Tasks
-* dummy ball to drop for debugging
+* document resizing
 * resizes debugging texts and so on
+* dummy ball to drop for debugging
 * remove all attractive and physical bodies: "// NECESSARY FOR ATTRACITVE SHAPES???"
 * rework mouse constraints
 * gif

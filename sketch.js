@@ -51,11 +51,11 @@ function preload() {
   // direct API
   //data = loadJSON("https://global-warming.org/api/co2-api");
   // for static
-  data = loadJSON("./co2_data_static_export.json");
+  data = loadJSON("co2_data_static_export.json");
 
-  underneath_image = loadImage("./franziskaner_underneath.png");
-  impediments_image = loadImage("./franziskaner_only_impediments.png");  // for defining impediments
-  on_top_image = loadImage("./franziskaner_on_top.png");
+  underneath_image = loadImage("franziskaner_underneath.png");
+  impediments_image = loadImage("franziskaner_only_impediments.png");  // for defining impediments
+  on_top_image = loadImage("franziskaner_on_top.png");
 
   // loop through data and load all the images to the json
   for (let impediment of impediments_data) {
