@@ -47,6 +47,7 @@ let rescaling_height;
 let element = [];
 
 function preload() {
+
   // direct API
   //data = loadJSON("https://global-warming.org/api/co2-api");
   // for static
@@ -66,17 +67,18 @@ function preload() {
   for (let particle of particle_data) {
     particle.image = loadImage(particle.image_path)
   }
-
 }
 
 function setup() {
+  var canvas = createCanvas(windowWidth, windowHeight).parent('canvasHolder');
+  // var canvas = createCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor).parent('canvasHolder');
+
   logging.setLevel(SWITCH_LOGGING_LEVEL);
 
   // matter.js stuff
   engine = Engine.create();
   world = engine.world;
 
-  var canvas = createCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor).parent('canvasHolder');
 
   editor = new Editor();
 
