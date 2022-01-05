@@ -23,6 +23,12 @@ The digital painting visualizes the increasing CO² concentration in the earth's
 * video
 * seed: Discord, Tweet, LinkedIn
 
+## Resizing
+
+The canvas responsively resizes to the width, height - that is `Window.innerHeight` & `Window.innerHeight`. In p5.js the resizing is done by scaling the drawn images with respect to new width or height. Matter.js is more difficult since the objects can only be changed relative to their current position and not positioned at a certain location. For static objects: the `scale()` function is used for recalculating the object's size and its physics + `translate)()` to move the object to the new location after rescaling the whole scene. difference from acutal position at actual size to same location to new size. the nonstatic objects are removed and created newly after resizing.
+
+sd
+
 
 ## defining the coordinates of brush sprites
 * enable rulers in Krita
