@@ -3,50 +3,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Generative art of CO² emissions</title>
-    <meta name="description"
-        content="The digital painting visualizes the increasing CO² concentration in the earth's atmosphere for the past 10 years.">
-    <meta name="author" content="Stefan Schwaha">
+  <title>Generative art of CO² emissions</title>
+  <meta name="description"
+    content="The digital painting visualizes the increasing CO² concentration in the earth's atmosphere for the past 10 years.">
+  <meta name="author" content="Stefan Schwaha">
 
-    <meta property="og:title" content="Generative art of CO² emissions">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://digitalitility.com">
-    <meta property="og:description"
-        content="The digital painting visualizes the increasing CO² concentration in the earth's atmosphere for the past 10 years.">
-    <meta property="og:image" content="thumbnail.gif">
+  <meta property="og:title" content="Generative art of CO² emissions">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digitalitility.com">
+  <meta property="og:description"
+    content="The digital painting visualizes the increasing CO² concentration in the earth's atmosphere for the past 10 years.">
+  <meta property="og:image" content="thumbnail.gif">
 
-    <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico">
 
-    <script type="text/javascript" src="p5.min.js"></script>
-    <script type="text/javascript" src="matter.min.js"></script>
-    <script type="text/javascript" src="loglevel.min.js"></script>
-    <script>
-        var logging = log.noConflict();
-    </script>
-    <script type="text/javascript" src='decomp.min.js' ) }}></script>
+  <script type="text/javascript" src="p5.min.js"></script>
+  <script type="text/javascript" src="matter.min.js"></script>
+  <script type="text/javascript" src="loglevel.min.js"></script>
+  <script>
+    var logging = log.noConflict();
+  </script>
+  <script type="text/javascript" src='decomp.min.js' ) }}></script>
 
-    <script type="text/javascript" src='vertices_data.js' ) }}></script>
-    <script type="text/javascript" src='vertices_editor.js' ) }}></script>
-    <script type="text/javascript" src='interactive.js' ) }}></script>
-    <script type="text/javascript" src='utils.js' ) }}></script>
-    <script type="text/javascript" src='Particle.js' ) }}></script>
-    <script type="text/javascript" src='Origin.js' ) }}></script>
-    <script type="text/javascript" src='sketch.js' ) }}></script>
+  <script type="text/javascript" src='vertices_data.js' ) }}></script>
+  <script type="text/javascript" src='vertices_editor.js' ) }}></script>
+  <script type="text/javascript" src='interactive.js' ) }}></script>
+  <script type="text/javascript" src='utils.js' ) }}></script>
+  <script type="text/javascript" src='Particle.js' ) }}></script>
+  <script type="text/javascript" src='Origin.js' ) }}></script>
+  <script type="text/javascript" src='sketch.js' ) }}></script>
 
-    <link type="text/css" rel="stylesheet" href="styles.css">
+  <link type="text/css" rel="stylesheet" href="styles.css">
 
 </head>
 
 
 <body>
-    <div id="p5_loading" class="loadingclass">Mixing the colors, cleaning brushes. Patience pls.</div>
-    <div class="container">
-        <div id="canvasHolder">
-        </div>
+  <div id="p5_loading" class="loadingclass"></div>
+  <div class="container">
+    <div id="canvasHolder">
     </div>
+  </div>
 
 </body>
 
@@ -62,115 +62,7 @@
 </div>
 
 
-.fxm-content.banner {
-  display: none;
-  background-color: #424242;
-  padding: 5px;
-  background-image: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.024) 25%,
-    transparent 0,
-    transparent 50%,
-    rgba(0, 0, 0, 0.024) 0,
-    rgba(0, 0, 0, 0.024) 75%,
-    transparent 0,
-    transparent
-  );
-  background-size: 64px 64px;
-}
-.fxm-content .alert {
-  margin: 0 auto;
-  width: 50%;
-}
-.fxm-content .alert-content {
-  display: inline-block;
-  color: #fff !important;
-  font-size: 15px;
-  font-family: sans-serif;
-  text-align: left;
-  line-height: 24px;
-}
-.fxm-content .alert-content p {
-  color: #fff;
-  float: left;
-  margin-right: 10px;
-}
-.fxm-content .alert-content p.headline {
-  margin-left: 10px;
-}
-.fxm-content .alert-content .content-inner p {
-  margin: 0 0 5px;
-}
-.fxm-content .alert-content input[type="checkbox"] {
-  display: none;
-}
-.fxm-content .alert-content .lbl-toggle {
-  display: block;
-  font-weight: 700;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.25s ease-out;
-  text-decoration: underline;
-  margin-top: 5px;
-  float: right;
-  border: red dashed 1px;
-  text-decoration: none;
-  background: #006778;
-  padding: 10px;
-  border-radius: 5px;
-  display: inline-block;
-  border: none;
-  transition: all 0.4s ease 0s;
-}
-.fxm-content .alert-content .lbl-toggle::after {
-  content: " ";
-  display: inline-block;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid #fff;
-  vertical-align: middle;
-  margin-left: 0.7rem;
-  transform: translateY(-2px);
-  transition: transform 0.2s ease-out;
-}
-.fxm-content .alert-content .collapsible-content {
-  max-height: 0;
-  overflow: hidden;
-  clear: both;
-  transition: max-height 0.25s ease-in-out;
-}
-.fxm-content .alert-content .collapsible-content a {
-  color: #e8e8e8;
-}
-.fxm-content
-  .alert-content
-  .toggle:checked
-  + .lbl-toggle
-  + .collapsible-content {
-  background-color: #696969;
-  max-height: 350px;
-  padding: 10px;
-  border-radius: 7px;
-  margin-bottom: 15px;
-}
-.fxm-content .alert-content .toggle:checked + .lbl-toggle::after {
-  transform: rotate(90deg) translateX(-3px);
-}
-@media (min-width: 320px) and (max-width: 1024px) {
-  .fxm-content .alert-content .collapsible-content {
-    margin-top: 20px;
-  }
-  .fxm-content .alert {
-    width: 80%;
-  }
-  .fxm-content .alert-content .lbl-toggle {
-    float: none;
-    clear: both;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-  }
-}
+
 
 
 
