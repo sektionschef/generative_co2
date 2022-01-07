@@ -17,6 +17,11 @@ sd
 ## defining the coordinates of brush sprites
 * enable rulers in Krita
 
+## Font
+Krub: https://fonts.google.com/specimen/Krub 
+
+## Performance know how
+comes from: https://github.com/processing/p5.js/wiki/Optimizing-p5.js-Code-for-Performance
 
 # guide for minting
 

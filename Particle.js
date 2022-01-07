@@ -281,8 +281,7 @@ class Particle {
 
     push();
     fill(255, 0, 0);
-    // textFont("Helvetica");
-    textSize(10);
+    textSize(default_debugging_text_size * scaling_factor);
     // textAlign(CENTER, CENTER);
     text(this.physical_body.label, (this.physical_centre.x + 10), (this.physical_centre.y - 10));
     pop();

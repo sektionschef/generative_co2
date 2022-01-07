@@ -1,6 +1,7 @@
 // trace, debug, info, warn, error
-let SWITCH_LOGGING_LEVEL = "info";
-// let SWITCH_LOGGING_LEVEL = "debug";
+// let SWITCH_LOGGING_LEVEL = "warn";
+// let SWITCH_LOGGING_LEVEL = "info";
+let SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
 // let SWITCH_CREATE_IMPEDIMENTS = true;
@@ -12,11 +13,17 @@ let CANVAS_HEIGHT = 2160;
 
 let min_particles = 600;
 let max_particles = 2000;
+let vertical_gravity = -0.25;
+
 let current_particles_count;
 let current_co2;
 let current_day_index;
+let fps = 0;
+let custom_font;
+let custom_font_bold;
 
-let vertical_gravity = -0.25;
+let default_debugging_text_size = 25;
+
 
 // matter.js stuff
 var Engine = Matter.Engine;
@@ -67,6 +74,9 @@ function preload() {
   for (let particle of particle_data) {
     particle.image = loadImage(particle.image_path)
   }
+
+  custom_font = loadFont('Krub-Regular.ttf');
+  custom_font_bold = loadFont('Krub-Bold.ttf');
 }
 
 function setup() {
@@ -183,18 +193,7 @@ function draw() {
     image(impediments_image, 0, 0, impediments_image.width * scaling_factor, impediments_image.height * scaling_factor);
     image(on_top_image, 0, 0, on_top_image.width * scaling_factor, on_top_image.height * scaling_factor);
 
-    // label
-    let co2_string = current_co2 + ' ppm CO² in atmosphere'
-    push();
-    fill(50);
-    // stroke(200);
-    // textFont("Helvetica");
-    textSize(25 * scaling_factor);
-    textStyle(BOLD);
-    text(current_date_string, 3430 * scaling_factor, 2100 * scaling_factor);
-    textStyle(NORMAL);
-    text(co2_string, 3320 * scaling_factor, 2130 * scaling_factor);
-    pop();
+    show_co2_label();
   }
 
   if (logging.getLevel() <= 1) {
@@ -203,7 +202,10 @@ function draw() {
     }
   }
 
-  editor.show();
+  if (logging.getLevel() <= 2) {
+    editor.show();
+    show_framerate();
+  }
 
   // logging.debug("Number of physical bodies in the world: " + world.bodies.length);
 
