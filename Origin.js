@@ -39,4 +39,38 @@ class Origin {
 }
 
 
+class Origins {
+    constructor(buildingPlans = {}) {
+        // element to hold the origins
+        this.bodies = [];
+        this.buildingPlans = buildingPlans;
+    }
 
+    create_all() {
+        for (let buildingPlan of this.buildingPlans) {
+            this.bodies.push(new Origin(
+                buildingPlan["x"],
+                buildingPlan["y"],
+                buildingPlan["label"]
+            ));
+        }
+    }
+
+    drop_all() {
+        for (let origin of this.bodies) {
+            origin.drop();
+        }
+    }
+
+    debugging_show_origins() {
+        for (let origin of this.bodies) {
+            origin.draw_origin_positions_debug();
+
+        }
+    }
+
+    kill_all() {
+        this.bodies = [];
+    }
+
+}

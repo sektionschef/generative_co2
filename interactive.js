@@ -52,16 +52,8 @@ function resize_canvas() {
   impediments.create_all();
   impediments.rescale();
 
-
-  // own class
-  origins = [];
-  for (let origin_source of origins_data) {
-    origins.push(new Origin(
-      origin_source["x"],
-      origin_source["y"],
-      origin_source["label"]
-    ));
-  }
+  origins.kill_all();
+  origins.create_all();
 
   resizeCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor);
 }

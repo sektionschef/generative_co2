@@ -46,12 +46,13 @@ let underneath_image;
 let impediments_image;
 let on_top_image;
 
-let origins = [];
-
 let data;
 let scaling_factor = 1;
 let rescaling_width;
 let rescaling_height;
+
+let origins;
+// impediment + particle + origin, editor
 
 function preload() {
 
@@ -81,14 +82,12 @@ function preload() {
 
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight).parent('canvasHolder');
-  // var canvas = createCanvas(CANVAS_WIDTH * scaling_factor, CANVAS_HEIGHT * scaling_factor).parent('canvasHolder');
 
   logging.setLevel(SWITCH_LOGGING_LEVEL);
 
   // matter.js stuff
   engine = Engine.create();
   world = engine.world;
-
 
   editor = new Editor();
 
@@ -97,13 +96,8 @@ function setup() {
   impediments = new Particles(impediments_data);
   impediments.create_all();
 
-  for (let origin_source of origins_data) {
-    origins.push(new Origin(
-      origin_source["x"],
-      origin_source["y"],
-      origin_source["label"]
-    ));
-  }
+  origins = new Origins(origins_data);
+  origins.create_all();
 
   var canvas_mouse = Mouse.create(canvas.elt);
   canvas_mouse.pixelRatio = pixelDensity();
@@ -113,6 +107,7 @@ function setup() {
   // matter.js stuff
   Matter.Runner.run(engine)
   engine.world.gravity.y = vertical_gravity;
+
 
   // calculate max of co2 data
   let data_trend = [];
@@ -127,10 +122,11 @@ function setup() {
   current_day_index = 0;
 
   resize_canvas();
+
 }
 
 function draw() {
-  background("black");
+  background("white");
 
   if (!data) {
     // Wait until the data has loaded before drawing.
@@ -163,10 +159,7 @@ function draw() {
     image(impediments_image, 0, 0, impediments_image.width * scaling_factor, impediments_image.height * scaling_factor);
   }
 
-  //eventuell eigene Origins Klasse
-  for (let origin of origins) {
-    origin.drop()
-  }
+  origins.drop_all();
 
   // hygiene functions
   particles_physical.show();
@@ -184,11 +177,8 @@ function draw() {
 
   // own class! - debugging origins
   if (logging.getLevel() <= 1) {
-    for (let origin of origins) {
-      origin.draw_origin_positions_debug();
-
-      impediments.drag(mouseX, mouseY);
-    }
+    origins.debugging_show_origins();
+    impediments.drag(mouseX, mouseY);
   }
 
   if (logging.getLevel() <= 2) {
