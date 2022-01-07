@@ -80,12 +80,26 @@ function show_co2_label() {
 
 // Draw FPS (rounded to 2 decimal places) at the bottom left of the screen
 function show_framerate() {
-    if (frameCount % 5 == 1) {
+    if (frameCount % 10 == 1) {
         fps = frameRate();
     }
     push();
     fill(255);
     stroke(0);
     text("FPS: " + fps.toFixed(2), 10, height - 10);
+    pop();
+}
+
+// show the current number of physical bodies in the world
+function show_number_physical_bodies() {
+
+    if (frameCount % 10 == 1) {
+        debugging_physical_body_count = world.bodies.length
+    }
+    let string = "Physical Body Count: " + debugging_physical_body_count;
+    push();
+    fill(255);
+    stroke(0);
+    text(string, 10, height - 30);
     pop();
 }

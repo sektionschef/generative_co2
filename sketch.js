@@ -1,7 +1,7 @@
 // trace, debug, info, warn, error
 // let SWITCH_LOGGING_LEVEL = "warn";
-// let SWITCH_LOGGING_LEVEL = "info";
-let SWITCH_LOGGING_LEVEL = "debug";
+let SWITCH_LOGGING_LEVEL = "info";
+// let SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
 // let SWITCH_CREATE_IMPEDIMENTS = true;
@@ -21,8 +21,10 @@ let current_day_index;
 let fps = 0;
 let custom_font;
 let custom_font_bold;
+current_date_string = "";
 
 let default_debugging_text_size = 25;
+let debugging_physical_body_count = 0;
 
 
 // matter.js stuff
@@ -50,8 +52,6 @@ let data;
 let scaling_factor = 1;
 let rescaling_width;
 let rescaling_height;
-
-let element = [];
 
 function preload() {
 
@@ -127,9 +127,6 @@ function setup() {
   current_day_index = 0;
 
   resize_canvas();
-
-  // dummy 
-  element.centre = { x: 500, y: 500 };
 }
 
 function draw() {
@@ -141,8 +138,12 @@ function draw() {
   }
 
   // rythm of changing the day
-  if (frameCount % 5 == 1) {
-    if (current_day_index >= data.co2.length)
+  if (frameCount % 20 == 1) {
+    // console.log(data.co2.length);
+    // console.log(current_day_index);
+
+    // reset to beginning
+    if (current_day_index == (data.co2.length - 1))
       current_day_index = 0;
 
     current_day_index += 1;
@@ -171,22 +172,7 @@ function draw() {
   particles_physical.show();
   particles_physical.kill_not_needed(current_particles_count);
 
-  // dummy
-  if (element.centre.x != 500) {
-    push();
-    fill(120, 255, 255);
-    noStroke()
-    beginShape();
-    for (var i = 0; i < element.vertices.length; i++) {
-      vertex(element.vertices[i].x, element.vertices[i].y);
-    }
-    endShape(CLOSE);
-    // translate(this.physical_body.position.x, this.physical_body.position.y);
-    // ellipse(0, 0, this.radius * 2);
-    pop();
-  }
-
-  impediments.drag(mouseX, mouseY);
+  // needed - debugging here or - together with impediment mode?
   impediments.show();
 
   if (SWITCH_CREATE_IMPEDIMENTS == false) {
@@ -196,18 +182,20 @@ function draw() {
     show_co2_label();
   }
 
+  // own class! - debugging origins
   if (logging.getLevel() <= 1) {
     for (let origin of origins) {
       origin.draw_origin_positions_debug();
+
+      impediments.drag(mouseX, mouseY);
     }
   }
 
   if (logging.getLevel() <= 2) {
     editor.show();
+    show_number_physical_bodies();
     show_framerate();
   }
-
-  // logging.debug("Number of physical bodies in the world: " + world.bodies.length);
 
   Engine.update(engine);
 }
