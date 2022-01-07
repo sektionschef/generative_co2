@@ -1,28 +1,23 @@
 // trace, debug, info, warn, error
-// let SWITCH_LOGGING_LEVEL = "warn";
-let SWITCH_LOGGING_LEVEL = "info";
-// let SWITCH_LOGGING_LEVEL = "debug";
+// const SWITCH_LOGGING_LEVEL = "warn";
+const SWITCH_LOGGING_LEVEL = "info";
+// const SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
-// let SWITCH_CREATE_IMPEDIMENTS = true;
-let SWITCH_CREATE_IMPEDIMENTS = false;
+// const SWITCH_CREATE_IMPEDIMENTS = true;
+const SWITCH_CREATE_IMPEDIMENTS = false;
 
 // mind aspect ratio of image - default resolution
-let CANVAS_WIDTH = 3840;
-let CANVAS_HEIGHT = 2160;
+const CANVAS_WIDTH = 3840;
+const CANVAS_HEIGHT = 2160;
 
-let min_particles = 600;
-let max_particles = 2000;
-let vertical_gravity = -0.25;
 
-let current_particles_count;
-let current_co2;
-let current_day_index;
-let fps = 0;
+const VERTICAL_GRAVITY = -0.25;
+
 let custom_font;
 let custom_font_bold;
-current_date_string = "";
 
+let fps = 0;
 let default_debugging_text_size = 25;
 let debugging_physical_body_count = 0;
 
@@ -40,18 +35,15 @@ var MouseConstraint = Matter.MouseConstraint;
 
 var engine;
 var world;
-var ground;
 
 let underneath_image;
 let impediments_image;
 let on_top_image;
 
-let data;
-let scaling_factor = 1;
+let SCALING_FACTOR = 1;
 let rescaling_width;
 let rescaling_height;
 
-let origins;
 // impediment + particle + origin, editor
 
 function preload() {
@@ -59,7 +51,7 @@ function preload() {
   // direct API
   //data = loadJSON("https://global-warming.org/api/co2-api");
   // for static
-  data = loadJSON("co2_data_static_export.json");
+  co2_data = loadJSON("co2_data_static_export.json");
 
   underneath_image = loadImage("franziskaner_underneath.png");
   impediments_image = loadImage("franziskaner_only_impediments.png");  // for defining impediments
@@ -96,7 +88,7 @@ function setup() {
   impediments = new Particles(impediments_data);
   impediments.create_all();
 
-  origins = new Origins(origins_data);
+  origins = new Origins(origins_data, co2_data);
   origins.create_all();
 
   var canvas_mouse = Mouse.create(canvas.elt);
@@ -106,73 +98,37 @@ function setup() {
 
   // matter.js stuff
   Matter.Runner.run(engine)
-  engine.world.gravity.y = vertical_gravity;
-
-
-  // calculate max of co2 data
-  let data_trend = [];
-  for (let co2_per_day of data.co2) {
-    data_trend.push(float(co2_per_day.trend));
-  }
-  co2_min = Math.min(...data_trend);
-  co2_max = Math.max(...data_trend);
-
-  current_particles_count = 0;
-  current_co2 = 400;  // dummy value
-  current_day_index = 0;
+  engine.world.gravity.y = VERTICAL_GRAVITY;
 
   resize_canvas();
-
 }
 
 function draw() {
   background("white");
 
-  if (!data) {
-    // Wait until the data has loaded before drawing.
-    return;
-  }
-
-  // rythm of changing the day
-  if (frameCount % 20 == 1) {
-    // console.log(data.co2.length);
-    // console.log(current_day_index);
-
-    // reset to beginning
-    if (current_day_index == (data.co2.length - 1))
-      current_day_index = 0;
-
-    current_day_index += 1;
-    data.co2[current_day_index]
-    current_date_string = data.co2[current_day_index].year + "-" + data.co2[current_day_index].month + "-" + data.co2[current_day_index].day;
-    current_co2 = data.co2[current_day_index].trend
-    current_particles_count = map(current_co2, co2_min, co2_max, min_particles, max_particles, true);
-    // console.debug("number of particles: " + current_particles_count)
-
-  }
 
   // layers
   if (SWITCH_CREATE_IMPEDIMENTS == false) {
-    image(underneath_image, 0, 0, underneath_image.width * scaling_factor, underneath_image.height * scaling_factor);
+    image(underneath_image, 0, 0, underneath_image.width * SCALING_FACTOR, underneath_image.height * SCALING_FACTOR);
   } else {
     background(255);
-    image(impediments_image, 0, 0, impediments_image.width * scaling_factor, impediments_image.height * scaling_factor);
+    image(impediments_image, 0, 0, impediments_image.width * SCALING_FACTOR, impediments_image.height * SCALING_FACTOR);
   }
 
+  origins.looping_through_days();
   origins.drop_all();
 
   // hygiene functions
   particles_physical.show();
-  particles_physical.kill_not_needed(current_particles_count);
 
   // needed - debugging here or - together with impediment mode?
   impediments.show();
 
   if (SWITCH_CREATE_IMPEDIMENTS == false) {
-    image(impediments_image, 0, 0, impediments_image.width * scaling_factor, impediments_image.height * scaling_factor);
-    image(on_top_image, 0, 0, on_top_image.width * scaling_factor, on_top_image.height * scaling_factor);
+    image(impediments_image, 0, 0, impediments_image.width * SCALING_FACTOR, impediments_image.height * SCALING_FACTOR);
+    image(on_top_image, 0, 0, on_top_image.width * SCALING_FACTOR, on_top_image.height * SCALING_FACTOR);
 
-    show_co2_label();
+    origins.show_co2_label();
   }
 
   // own class! - debugging origins
@@ -183,6 +139,8 @@ function draw() {
 
   if (logging.getLevel() <= 2) {
     editor.show();
+
+    origins.show_number_physical_bodies();
     show_number_physical_bodies();
     show_framerate();
   }

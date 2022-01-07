@@ -99,14 +99,14 @@ class Particle {
       Body.translate(
         this.physical_body, {
         // not absolute position but change
-        x: (this.effectiveTopLeftPostion.x - this.physical_centre.x - this.offsetPhysical.x * scaling_factor),
-        y: (this.effectiveTopLeftPostion.y - this.physical_centre.y - this.offsetPhysical.y * scaling_factor)
+        x: (this.effectiveTopLeftPostion.x - this.physical_centre.x - this.offsetPhysical.x * SCALING_FACTOR),
+        y: (this.effectiveTopLeftPostion.y - this.physical_centre.y - this.offsetPhysical.y * SCALING_FACTOR)
       }
       );
     } else {
       this.effectiveTopLeftPostion = {
-        x: (this.physical_centre.x + this.offsetPhysical.x * scaling_factor),
-        y: (this.physical_centre.y + this.offsetPhysical.y * scaling_factor)
+        x: (this.physical_centre.x + this.offsetPhysical.x * SCALING_FACTOR),
+        y: (this.physical_centre.y + this.offsetPhysical.y * SCALING_FACTOR)
       }
     }
 
@@ -116,8 +116,8 @@ class Particle {
         this.sprite,
         this.attractivePosition.x,
         this.attractivePosition.y,
-        this.sprite.width * scaling_factor,
-        this.sprite.height * scaling_factor,
+        this.sprite.width * SCALING_FACTOR,
+        this.sprite.height * SCALING_FACTOR,
       );
     } else {
       // rotate around the physical centre but show the sprite on top left thus using the offset
@@ -126,10 +126,10 @@ class Particle {
 
       image(
         this.sprite,
-        this.offsetPhysical.x * scaling_factor,
-        this.offsetPhysical.y * scaling_factor,
-        this.sprite.width * scaling_factor,
-        this.sprite.height * scaling_factor,
+        this.offsetPhysical.x * SCALING_FACTOR,
+        this.offsetPhysical.y * SCALING_FACTOR,
+        this.sprite.width * SCALING_FACTOR,
+        this.sprite.height * SCALING_FACTOR,
       );
     }
     pop();
@@ -169,14 +169,14 @@ class Particle {
     let centre_y_before = this.physical_centre.y;
 
     // scale recalculates physics of body automatically (e.g. centre, mass and so on)
-    Body.scale(this.physical_body, scaling_factor, scaling_factor);
+    Body.scale(this.physical_body, SCALING_FACTOR, SCALING_FACTOR);
 
     // since also the canvas resized, there should also be a new position - for dynamic bodies, just erase them and recreate
     if (this.physical_body.isStatic) {
 
       // calculate the new position after applying the resize
-      let new_position_x = centre_x_before * scaling_factor;
-      let new_position_y = centre_y_before * scaling_factor;
+      let new_position_x = centre_x_before * SCALING_FACTOR;
+      let new_position_y = centre_y_before * SCALING_FACTOR;
 
       // calculate the difference for the translate function
       let correction_x = new_position_x - centre_x_before;
@@ -252,8 +252,8 @@ class Particle {
     rect(
       this.effectiveTopLeftPostion.x,
       this.effectiveTopLeftPostion.y,
-      this.sprite.width * scaling_factor,  // smaller
-      this.sprite.height * scaling_factor // smaller
+      this.sprite.width * SCALING_FACTOR,  // smaller
+      this.sprite.height * SCALING_FACTOR // smaller
     );
     pop();
   }
@@ -281,7 +281,7 @@ class Particle {
 
     push();
     fill(255, 0, 0);
-    textSize(default_debugging_text_size * scaling_factor);
+    textSize(default_debugging_text_size * SCALING_FACTOR);
     // textAlign(CENTER, CENTER);
     text(this.physical_body.label, (this.physical_centre.x + 10), (this.physical_centre.y - 10));
     pop();
@@ -316,8 +316,8 @@ class Particles {
 
     // correct for difference between top left and centre
     let position_corrected = {
-      x: position.x + chosen_building_plan.offsetPhysical.x * scaling_factor,
-      y: position.y + chosen_building_plan.offsetPhysical.y * scaling_factor,
+      x: position.x + chosen_building_plan.offsetPhysical.x * SCALING_FACTOR,
+      y: position.y + chosen_building_plan.offsetPhysical.y * SCALING_FACTOR,
     }
 
     this.bodies.push(new Particle(
@@ -409,5 +409,6 @@ class Particles {
     for (let particle of this.bodies) {
       particle.remove_physical_body();
     }
+    this.bodies = [];
   }
 }

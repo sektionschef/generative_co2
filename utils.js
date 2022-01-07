@@ -61,23 +61,6 @@
 // }
 
 
-function show_co2_label() {
-    let co2_string = current_co2 + ' ppm CO² in atmosphere'
-
-    let text_size = 25;
-    push();
-    fill(50);
-    // stroke(200);
-    textSize(text_size * scaling_factor);
-    // textStyle(BOLD);
-    textFont(custom_font_bold);
-    text(current_date_string, 3430 * scaling_factor, 2100 * scaling_factor);
-    textFont(custom_font);
-    // textStyle(NORMAL);
-    text(co2_string, 3320 * scaling_factor, 2130 * scaling_factor);
-    pop();
-}
-
 // Draw FPS (rounded to 2 decimal places) at the bottom left of the screen
 function show_framerate() {
     if (frameCount % 10 == 1) {

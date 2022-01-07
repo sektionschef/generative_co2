@@ -1,3 +1,17 @@
+const options_impediments = {
+  isStatic: true,
+  friction: 1,
+  inertia: Infinity,  // prevents rotation
+}
+
+const options_particles = {
+  isStatic: false,
+  friction: 1,
+  restitution: 0.7,  // A Number that defines the restitution (elasticity) of the body.
+  density: 1
+  // inertia: Infinity,  // prevents rotation
+}
+
 const impediments_data = [
   {
     label: "franziskaner_impediment_1",
@@ -9,11 +23,7 @@ const impediments_data = [
       x: (0 - 240),
       y: (0 - 2070),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 279, y: 2160 },
       { x: 333, y: 2118 },
@@ -35,11 +45,7 @@ const impediments_data = [
       x: (0 - 36),
       y: (0 - 1866),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 0, y: 1932 },
       { x: 69, y: 1911 },
@@ -57,11 +63,7 @@ const impediments_data = [
       x: (0 - 498),
       y: (0 - 1956),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 459, y: 2055 },
       { x: 441, y: 2046 },
@@ -82,11 +84,7 @@ const impediments_data = [
       x: (0 - 969),
       y: (0 - 2066),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1041, y: 2160 },
       { x: 1053, y: 1992 },
@@ -107,11 +105,7 @@ const impediments_data = [
       x: (0 - 1293),
       y: (0 - 2097),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1239, y: 2136 },
       { x: 1329, y: 2187 },
@@ -131,11 +125,7 @@ const impediments_data = [
       x: (0 - 1581),
       y: (0 - 2043),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1584, y: 2103 },
       { x: 1665, y: 2013 },
@@ -153,11 +143,7 @@ const impediments_data = [
       x: (0 - 1971),
       y: (0 - 2094),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2049, y: 2157 },
       { x: 2034, y: 2091 },
@@ -177,11 +163,7 @@ const impediments_data = [
       x: (0 - 2265),
       y: (0 - 1935),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2160, y: 1983 },
       { x: 2187, y: 1875 },
@@ -202,11 +184,7 @@ const impediments_data = [
       x: (0 - 2526),
       y: (0 - 1959),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2487, y: 2052 },
       { x: 2601, y: 2001 },
@@ -226,11 +204,7 @@ const impediments_data = [
       x: (0 - 2940),
       y: (0 - 2123),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2847, y: 2160 },
       { x: 2910, y: 2073 },
@@ -250,11 +224,7 @@ const impediments_data = [
       x: (0 - 3198),
       y: (0 - 2028),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3237, y: 2130 },
       { x: 3111, y: 2025 },
@@ -274,11 +244,7 @@ const impediments_data = [
       x: (0 - 3747),
       y: (0 - 2097),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3783, y: 2160 },
       { x: 3789, y: 2106 },
@@ -298,11 +264,7 @@ const impediments_data = [
       x: (0 - 3483),
       y: (0 - 1923),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3486, y: 2043 },
       { x: 3570, y: 1953 },
@@ -321,11 +283,7 @@ const impediments_data = [
       x: (0 - 2799),
       y: (0 - 1894),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2805, y: 1998 },
       { x: 2871, y: 1965 },
@@ -347,11 +305,7 @@ const impediments_data = [
       x: (0 - 3803),
       y: (0 - 1842),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3840, y: 2034 },
       { x: 3807, y: 1935 },
@@ -370,11 +324,7 @@ const impediments_data = [
       x: (0 - 1260),
       y: (0 - 1827),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1326, y: 1926 },
       { x: 1362, y: 1890 },
@@ -397,11 +347,7 @@ const impediments_data = [
       x: (0 - 3627),
       y: (0 - 1614),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3570, y: 1722 },
       { x: 3711, y: 1596 },
@@ -423,11 +369,7 @@ const impediments_data = [
       x: (0 - 3690),
       y: (0 - 1254),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3711, y: 1314 },
       { x: 3768, y: 1344 },
@@ -448,11 +390,7 @@ const impediments_data = [
       x: (0 - 3621),
       y: (0 - 765),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3642, y: 870 },
       { x: 3720, y: 777 },
@@ -470,11 +408,7 @@ const impediments_data = [
       x: (0 - 3681),
       y: (0 - 513),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3669, y: 570 },
       { x: 3771, y: 513 },
@@ -494,11 +428,7 @@ const impediments_data = [
       x: (0 - 3720),
       y: (0 - 231),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3711, y: 282 },
       { x: 3759, y: 189 },
@@ -516,11 +446,7 @@ const impediments_data = [
       x: (0 - 3681),
       y: (0 - 87),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3693, y: 168 },
       { x: 3777, y: 93 },
@@ -540,11 +466,7 @@ const impediments_data = [
       x: (0 - 3552),
       y: (0 - 342),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3573, y: 417 },
       { x: 3639, y: 399 },
@@ -563,11 +485,7 @@ const impediments_data = [
       x: (0 - 1812),
       y: (0 - 1814),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1752, y: 1888 },
       { x: 1754, y: 1892 },
@@ -587,11 +505,7 @@ const impediments_data = [
       x: (0 - 1574),
       y: (0 - 1756),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1596, y: 1848 },
       { x: 1668, y: 1734 },
@@ -609,11 +523,7 @@ const impediments_data = [
       x: (0 - 244),
       y: (0 - 1742),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 236, y: 1860 },
       { x: 178, y: 1792 },
@@ -636,11 +546,7 @@ const impediments_data = [
       x: (0 - 260),
       y: (0 - 1422),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 332, y: 1546 },
       { x: 126, y: 1464 },
@@ -661,11 +567,7 @@ const impediments_data = [
       x: (0 - 486),
       y: (0 - 1504),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 450, y: 1558 },
       { x: 440, y: 1458 },
@@ -686,11 +588,7 @@ const impediments_data = [
       x: (0 - 664),
       y: (0 - 1710),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 558, y: 1696 },
       { x: 614, y: 1816 },
@@ -711,11 +609,7 @@ const impediments_data = [
       x: (0 - 644),
       y: (0 - 1302),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 616, y: 1470 },
       { x: 602, y: 1362 },
@@ -736,11 +630,7 @@ const impediments_data = [
       x: (0 - 318),
       y: (0 - 806),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 272, y: 886 },
       { x: 306, y: 872 },
@@ -760,11 +650,7 @@ const impediments_data = [
       x: (0 - 452),
       y: (0 - 1010),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 470, y: 1096 },
       { x: 508, y: 1064 },
@@ -784,11 +670,7 @@ const impediments_data = [
       x: (0 - 28),
       y: (0 - 1064),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 0, y: 1164 },
       { x: 4, y: 988 },
@@ -806,11 +688,7 @@ const impediments_data = [
       x: (0 - 136),
       y: (0 - 914),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 172, y: 992 },
       { x: 106, y: 946 },
@@ -831,11 +709,7 @@ const impediments_data = [
       x: (0 - 74),
       y: (0 - 628),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 64, y: 756 },
       { x: 186, y: 532 },
@@ -855,11 +729,7 @@ const impediments_data = [
       x: (0 - 416),
       y: (0 - 560),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 416, y: 668 },
       { x: 356, y: 620 },
@@ -879,11 +749,7 @@ const impediments_data = [
       x: (0 - 508),
       y: (0 - 294),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 480, y: 362 },
       { x: 432, y: 262 },
@@ -903,11 +769,7 @@ const impediments_data = [
       x: (0 - 692),
       y: (0 - 204),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 635, y: 244 },
       { x: 598, y: 168 },
@@ -927,11 +789,7 @@ const impediments_data = [
       x: (0 - 384),
       y: (0 - 44),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 292, y: 84 },
       { x: 330, y: 6 },
@@ -951,11 +809,7 @@ const impediments_data = [
       x: (0 - 116),
       y: (0 - 398),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 102, y: 458 },
       { x: 194, y: 424 },
@@ -974,11 +828,7 @@ const impediments_data = [
       x: (0 - 92),
       y: (0 - 238),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 138, y: 330 },
       { x: 4, y: 292 },
@@ -998,11 +848,7 @@ const impediments_data = [
       x: (0 - 144),
       y: (0 - 40),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 114, y: 86 },
       { x: 78, y: 44 },
@@ -1022,11 +868,7 @@ const impediments_data = [
       x: (0 - 726),
       y: (0 - 960),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 652, y: 988 },
       { x: 712, y: 894 },
@@ -1048,11 +890,7 @@ const impediments_data = [
       x: (0 - 944),
       y: (0 - 1756),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 890, y: 1840 },
       { x: 900, y: 1784 },
@@ -1074,11 +912,7 @@ const impediments_data = [
       x: (0 - 946),
       y: (0 - 1526),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 842, y: 1582 },
       { x: 960, y: 1436 },
@@ -1097,11 +931,7 @@ const impediments_data = [
       x: (0 - 908),
       y: (0 - 1244),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 842, y: 1328 },
       { x: 826, y: 1178 },
@@ -1121,11 +951,7 @@ const impediments_data = [
       x: (0 - 998),
       y: (0 - 890),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 958, y: 966 },
       { x: 904, y: 864 },
@@ -1145,11 +971,7 @@ const impediments_data = [
       x: (0 - 776),
       y: (0 - 616),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 702, y: 668 },
       { x: 698, y: 554 },
@@ -1168,11 +990,7 @@ const impediments_data = [
       x: (0 - 1016),
       y: (0 - 668),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1008, y: 764 },
       { x: 924, y: 704 },
@@ -1193,11 +1011,7 @@ const impediments_data = [
       x: (0 - 782),
       y: (0 - 384),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 788, y: 462 },
       { x: 876, y: 350 },
@@ -1216,11 +1030,7 @@ const impediments_data = [
       x: (0 - 1010),
       y: (0 - 304),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 976, y: 402 },
       { x: 930, y: 302 },
@@ -1240,11 +1050,7 @@ const impediments_data = [
       x: (0 - 806),
       y: (0 - 44),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 844, y: 100 },
       { x: 754, y: 72 },
@@ -1265,11 +1071,7 @@ const impediments_data = [
       x: (0 - 1012),
       y: (0 - 70),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 978, y: 152 },
       { x: 938, y: 90 },
@@ -1289,11 +1091,7 @@ const impediments_data = [
       x: (0 - 1234),
       y: (0 - 1548),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1246, y: 1644 },
       { x: 1152, y: 1584 },
@@ -1313,11 +1111,7 @@ const impediments_data = [
       x: (0 - 1180),
       y: (0 - 1216),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1176, y: 1288 },
       { x: 1238, y: 1256 },
@@ -1336,11 +1130,7 @@ const impediments_data = [
       x: (0 - 1186),
       y: (0 - 806),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1124, y: 872 },
       { x: 1124, y: 826 },
@@ -1362,11 +1152,7 @@ const impediments_data = [
       x: (0 - 1376),
       y: (0 - 548),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1286, y: 604 },
       { x: 1306, y: 480 },
@@ -1389,11 +1175,7 @@ const impediments_data = [
       x: (0 - 1306),
       y: (0 - 142),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1250, y: 258 },
       { x: 1220, y: 68 },
@@ -1414,11 +1196,7 @@ const impediments_data = [
       x: (0 - 1436),
       y: (0 - 1302),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1448, y: 1374 },
       { x: 1366, y: 1332 },
@@ -1436,11 +1214,7 @@ const impediments_data = [
       x: (0 - 1400),
       y: (0 - 1088),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1358, y: 1166 },
       { x: 1296, y: 1046 },
@@ -1459,11 +1233,7 @@ const impediments_data = [
       x: (0 - 1550),
       y: (0 - 900),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1484, y: 962 },
       { x: 1450, y: 858 },
@@ -1485,11 +1255,7 @@ const impediments_data = [
       x: (0 - 1526),
       y: (0 - 1514),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1432, y: 1550 },
       { x: 1484, y: 1442 },
@@ -1510,11 +1276,7 @@ const impediments_data = [
       x: (0 - 1762),
       y: (0 - 1170),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1674, y: 1228 },
       { x: 1654, y: 1188 },
@@ -1535,11 +1297,7 @@ const impediments_data = [
       x: (0 - 1728),
       y: (0 - 654),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1662, y: 740 },
       { x: 1644, y: 602 },
@@ -1557,11 +1315,7 @@ const impediments_data = [
       x: (0 - 1638),
       y: (0 - 406),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1572, y: 450 },
       { x: 1600, y: 340 },
@@ -1580,11 +1334,7 @@ const impediments_data = [
       x: (0 - 1590),
       y: (0 - 204),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1532, y: 278 },
       { x: 1486, y: 182 },
@@ -1603,11 +1353,7 @@ const impediments_data = [
       x: (0 - 1550),
       y: (0 - 36),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1512, y: 96 },
       { x: 1468, y: 50 },
@@ -1625,11 +1371,7 @@ const impediments_data = [
       x: (0 - 1900),
       y: (0 - 1542),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1812, y: 1572 },
       { x: 1910, y: 1468 },
@@ -1648,11 +1390,7 @@ const impediments_data = [
       x: (0 - 2068),
       y: (0 - 1006),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1974, y: 1070 },
       { x: 2010, y: 922 },
@@ -1672,11 +1410,7 @@ const impediments_data = [
       x: (0 - 2030),
       y: (0 - 1300),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1946, y: 1252 },
       { x: 1960, y: 1360 },
@@ -1695,11 +1429,7 @@ const impediments_data = [
       x: (0 - 2154),
       y: (0 - 1620),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2154, y: 1798 },
       { x: 2102, y: 1766 },
@@ -1725,11 +1455,7 @@ const impediments_data = [
       x: (0 - 2208),
       y: (0 - 1190),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2166, y: 1274 },
       { x: 2122, y: 1148 },
@@ -1749,11 +1475,7 @@ const impediments_data = [
       x: (0 - 2366),
       y: (0 - 918),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2402, y: 1086 },
       { x: 2396, y: 992 },
@@ -1779,11 +1501,7 @@ const impediments_data = [
       x: (0 - 2068),
       y: (0 - 692),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2094, y: 804 },
       { x: 2228, y: 708 },
@@ -1805,11 +1523,7 @@ const impediments_data = [
       x: (0 - 2084),
       y: (0 - 326),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2078, y: 406 },
       { x: 2154, y: 372 },
@@ -1828,11 +1542,7 @@ const impediments_data = [
       x: (0 - 1910),
       y: (0 - 70),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 1910, y: 156 },
       { x: 1824, y: 98 },
@@ -1851,11 +1561,7 @@ const impediments_data = [
       x: (0 - 2162),
       y: (0 - 70),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2170, y: 138 },
       { x: 2100, y: 106 },
@@ -1874,11 +1580,7 @@ const impediments_data = [
       x: (0 - 2514),
       y: (0 - 1652),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2578, y: 1742 },
       { x: 2420, y: 1694 },
@@ -1898,11 +1600,7 @@ const impediments_data = [
       x: (0 - 2336),
       y: (0 - 494),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2282, y: 578 },
       { x: 2260, y: 528 },
@@ -1923,11 +1621,7 @@ const impediments_data = [
       x: (0 - 2312),
       y: (0 - 270),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2280, y: 356 },
       { x: 2246, y: 298 },
@@ -1945,11 +1639,7 @@ const impediments_data = [
       x: (0 - 2428),
       y: (0 - 82),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2350, y: 136 },
       { x: 2370, y: 24 },
@@ -1969,11 +1659,7 @@ const impediments_data = [
       x: (0 - 2690),
       y: (0 - 148),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2620, y: 236 },
       { x: 2646, y: 90 },
@@ -1991,11 +1677,7 @@ const impediments_data = [
       x: (0 - 2712),
       y: (0 - 752),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2748, y: 846 },
       { x: 2610, y: 762 },
@@ -2014,11 +1696,7 @@ const impediments_data = [
       x: (0 - 2548),
       y: (0 - 444),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2494, y: 510 },
       { x: 2642, y: 476 },
@@ -2037,11 +1715,7 @@ const impediments_data = [
       x: (0 - 2732),
       y: (0 - 1428),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2494, y: 510 },
       { x: 2642, y: 476 },
@@ -2060,11 +1734,7 @@ const impediments_data = [
       x: (0 - 2690),
       y: (0 - 1012),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2756, y: 1094 },
       { x: 2594, y: 1038 },
@@ -2082,11 +1752,7 @@ const impediments_data = [
       x: (0 - 2760),
       y: (0 - 528),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2740, y: 598 },
       { x: 2860, y: 554 },
@@ -2106,11 +1772,7 @@ const impediments_data = [
       x: (0 - 3258),
       y: (0 - 1716),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3279, y: 1809 },
       { x: 3153, y: 1743 },
@@ -2128,11 +1790,7 @@ const impediments_data = [
       x: (0 - 3009),
       y: (0 - 1620),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3003, y: 1704 },
       { x: 2919, y: 1611 },
@@ -2150,11 +1808,7 @@ const impediments_data = [
       x: (0 - 3348),
       y: (0 - 1455),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3429, y: 1494 },
       { x: 3276, y: 1539 },
@@ -2172,11 +1826,7 @@ const impediments_data = [
       x: (0 - 3072),
       y: (0 - 1362),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3153, y: 1431 },
       { x: 2970, y: 1398 },
@@ -2194,11 +1844,7 @@ const impediments_data = [
       x: (0 - 3024),
       y: (0 - 1110),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3051, y: 1194 },
       { x: 2919, y: 1140 },
@@ -2217,11 +1863,7 @@ const impediments_data = [
       x: (0 - 3444),
       y: (0 - 1020),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3444, y: 1137 },
       { x: 3324, y: 1053 },
@@ -2240,11 +1882,7 @@ const impediments_data = [
       x: (0 - 3162),
       y: (0 - 735),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3159, y: 804 },
       { x: 3111, y: 786 },
@@ -2263,11 +1901,7 @@ const impediments_data = [
       x: (0 - 3120),
       y: (0 - 471),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3033, y: 636 },
       { x: 2973, y: 618 },
@@ -2293,11 +1927,7 @@ const impediments_data = [
       x: (0 - 2928),
       y: (0 - 192),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 2823, y: 219 },
       { x: 2940, y: 114 },
@@ -2315,11 +1945,7 @@ const impediments_data = [
       x: (0 - 3126),
       y: (0 - 138),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3078, y: 162 },
       { x: 3084, y: 84 },
@@ -2337,11 +1963,7 @@ const impediments_data = [
       x: (0 - 3351),
       y: (0 - 150),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 3381, y: 222 },
       { x: 3435, y: 132 },
@@ -2360,11 +1982,7 @@ const impediments_data = [
       x: (0 - 600),
       y: (0 - 594),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 549, y: 696 },
       { x: 533, y: 618 },
@@ -2382,11 +2000,7 @@ const impediments_data = [
       x: (0 - 72),
       y: (0 - 1344),
     },
-    options: {
-      isStatic: true,
-      friction: 0,
-      inertia: Infinity,  // prevents rotation
-    },
+    options: options_impediments,
     vertices: [
       { x: 96, y: 1422 },
       { x: 9, y: 1350 },
@@ -2451,13 +2065,7 @@ const particle_data = [
       x: (0 - 23),
       y: (0 - 23),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 12, y: 20 },
       { x: 32, y: 17 },
@@ -2476,13 +2084,7 @@ const particle_data = [
       x: (0 - 23),
       y: (0 - 23),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 10, y: 20 },
       { x: 33, y: 17 },
@@ -2501,13 +2103,7 @@ const particle_data = [
       x: (0 - 25),
       y: (0 - 23),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 19, y: 19 },
       { x: 32, y: 19 },
@@ -2526,13 +2122,7 @@ const particle_data = [
       x: (0 - 25),
       y: (0 - 22),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 17, y: 19 },
       { x: 34, y: 17 },
@@ -2551,13 +2141,7 @@ const particle_data = [
       x: (0 - 24),
       y: (0 - 22),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 16, y: 18 },
       { x: 33, y: 17 },
@@ -2576,13 +2160,7 @@ const particle_data = [
       x: (0 - 26),
       y: (0 - 22),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 11, y: 15 },
       { x: 42, y: 14 },
@@ -2601,13 +2179,7 @@ const particle_data = [
       x: (0 - 26),
       y: (0 - 22),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 11, y: 15 },
       { x: 42, y: 14 },
@@ -2626,13 +2198,7 @@ const particle_data = [
       x: (0 - 24),
       y: (0 - 25),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 5, y: 21 },
       { x: 41, y: 12 },
@@ -2651,13 +2217,7 @@ const particle_data = [
       x: (0 - 25),
       y: (0 - 24),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 8, y: 14 },
       { x: 42, y: 12 },
@@ -2676,13 +2236,7 @@ const particle_data = [
       x: (0 - 24),
       y: (0 - 22),
     },
-    options: {
-      isStatic: false,
-      friction: 1,
-      restitution: 0.5,
-      density: 1
-      // inertia: Infinity,  // prevents rotation
-    },
+    options: options_particles,
     vertices: [
       { x: 6, y: 16 },
       { x: 42, y: 12 },
