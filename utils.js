@@ -77,9 +77,9 @@ function show_framerate() {
 function show_number_physical_bodies() {
 
     if (frameCount % 10 == 1) {
-        debugging_physical_body_count = world.bodies.length
+        debugging_physical_body_count = world.bodies.length - impediments.bodies.length
     }
-    let string = "Physical Body Count: " + debugging_physical_body_count;
+    let string = "Particle Count: " + debugging_physical_body_count;
     push();
     fill(255);
     stroke(0);

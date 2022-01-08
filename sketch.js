@@ -1,11 +1,11 @@
 // trace, debug, info, warn, error
-// const SWITCH_LOGGING_LEVEL = "warn";
+const SWITCH_LOGGING_LEVEL = "warn";
 // const SWITCH_LOGGING_LEVEL = "info";
-const SWITCH_LOGGING_LEVEL = "debug";
+// const SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
-const SWITCH_CREATE_IMPEDIMENTS = true;
-// const SWITCH_CREATE_IMPEDIMENTS = false;
+// const SWITCH_CREATE_IMPEDIMENTS = true;
+const SWITCH_CREATE_IMPEDIMENTS = false;
 
 // mind aspect ratio of image - default resolution
 const CANVAS_WIDTH = 3840;

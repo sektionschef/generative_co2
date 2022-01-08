@@ -1,8 +1,5 @@
 class Origin {
     constructor(position_x, position_y, label) {
-        this.frequency_drop = 5;  // random between 1 and this value
-
-        this.framecount = Math.floor((Math.random() * 100) + this.frequency_drop);
         this.position_x = Math.abs(position_x);
         this.position_y = Math.abs(position_y);
         this.label = label;
@@ -13,8 +10,8 @@ class Origin {
         this.position = { x: this.position_x, y: this.position_y }
     }
 
-    drop() {
-        if (frameCount % this.framecount == 1) {
+    drop(frequency) {
+        if (frameCount % frequency == 1) {
             particles_physical.add_single_sprite(this.position);
         }
     }
@@ -43,15 +40,17 @@ class Origin {
 // controlling the origins and the frequency of particles.
 class Origins {
     constructor(buildingPlans = {}, co2_data) {
-        this.min_particles = 600;
-        this.max_particles = 2000;
-        this.frameRythm = 20;
-
+        this.min_particles = 50;
+        this.max_particles = 500;
+        this.frameRythm = 5;  // 20 - day change speed
+        this.frequency_max_start = 5;  // frequency of particle drop - random between 1 and this value
+        this.frequency_min_start = 1;
 
         this.current_co2 = 400;
         this.current_day_index = 0;
         this.current_particles_limit = 0;
         this.current_date_string = "";
+        this.frequency = 1;
 
         this.bodies = [];
         this.buildingPlans = buildingPlans;
@@ -79,7 +78,8 @@ class Origins {
 
     drop_all() {
         for (let origin of this.bodies) {
-            origin.drop();
+            let frequency = Math.floor((Math.random() * 100) + this.frequency_max);
+            origin.drop(frequency);
         }
     }
 
@@ -107,9 +107,9 @@ class Origins {
             this.current_day_index += 1;
             this.current_date_string = this.co2_data.co2[this.current_day_index].year + "-" + this.co2_data.co2[this.current_day_index].month + "-" + this.co2_data.co2[this.current_day_index].day;
             this.current_co2 = this.co2_data.co2[this.current_day_index].trend
-            this.current_particles_limit = map(this.current_co2, this.co2_min, this.co2_max, this.min_particles, this.max_particles, true);
-            // console.debug("number of particles: " + this.current_particles_limit)
 
+            this.current_particles_limit = map(this.current_co2, this.co2_min, this.co2_max, this.min_particles, this.max_particles, true);
+            this.frequency_max = map(this.current_co2, this.co2_max, this.co2_min, this.frequency_max_start, this.frequency_min_start, true);
         }
         particles_physical.kill_not_needed(this.current_particles_limit);
     }
@@ -134,12 +134,13 @@ class Origins {
     // show the current limit/goal of physical bodies in the world
     show_number_physical_bodies() {
 
-        let string = "Physical Body Goal/Limit: " + this.current_particles_limit.toFixed(0);
+        let string = "Particle Goal: " + this.current_particles_limit.toFixed(0);
         push();
         fill(255);
         stroke(0);
         text(string, 10, height - 50);
         pop();
+        // console.log(this.frequency_max);
     }
 
 }

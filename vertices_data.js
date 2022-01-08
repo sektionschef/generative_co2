@@ -1,14 +1,16 @@
 const options_impediments = {
   isStatic: true,
   friction: 1,
+  restitution: 0.5,
+  density: 1,
   inertia: Infinity,  // prevents rotation
 }
 
 const options_particles = {
   isStatic: false,
   friction: 1,
-  restitution: 0.7,  // A Number that defines the restitution (elasticity) of the body.
-  density: 1
+  restitution: 0.5,  // A Number that defines the restitution (elasticity) of the body.
+  density: 1,
   // inertia: Infinity,  // prevents rotation
 }
 
