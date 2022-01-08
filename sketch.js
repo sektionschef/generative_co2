@@ -1,11 +1,11 @@
 // trace, debug, info, warn, error
 // const SWITCH_LOGGING_LEVEL = "warn";
-const SWITCH_LOGGING_LEVEL = "info";
-// const SWITCH_LOGGING_LEVEL = "debug";
+// const SWITCH_LOGGING_LEVEL = "info";
+const SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
-// const SWITCH_CREATE_IMPEDIMENTS = true;
-const SWITCH_CREATE_IMPEDIMENTS = false;
+const SWITCH_CREATE_IMPEDIMENTS = true;
+// const SWITCH_CREATE_IMPEDIMENTS = false;
 
 // mind aspect ratio of image - default resolution
 const CANVAS_WIDTH = 3840;
@@ -44,10 +44,7 @@ let SCALING_FACTOR = 1;
 let rescaling_width;
 let rescaling_height;
 
-// impediment + particle + origin, editor
-
 function preload() {
-
   // direct API
   //data = loadJSON("https://global-warming.org/api/co2-api");
   // for static
@@ -63,7 +60,6 @@ function preload() {
       impediment.image = loadImage(impediment.image_path)
     }
   }
-
   for (let particle of particle_data) {
     particle.image = loadImage(particle.image_path)
   }
@@ -73,7 +69,7 @@ function preload() {
 }
 
 function setup() {
-  var canvas = createCanvas(windowWidth, windowHeight).parent('canvasHolder');
+  let canvas = createCanvas(windowWidth, windowHeight).parent('canvasHolder');
 
   logging.setLevel(SWITCH_LOGGING_LEVEL);
 
@@ -84,14 +80,12 @@ function setup() {
   editor = new Editor();
 
   particles_physical = new Particles(particle_data);
-
   impediments = new Particles(impediments_data);
   impediments.create_all();
-
   origins = new Origins(origins_data, co2_data);
   origins.create_all();
 
-  var canvas_mouse = Mouse.create(canvas.elt);
+  let canvas_mouse = Mouse.create(canvas.elt);
   canvas_mouse.pixelRatio = pixelDensity();
   mConstraint = MouseConstraint.create(engine, { mouse: canvas_mouse })
   World.add(world, mConstraint);
@@ -106,8 +100,6 @@ function setup() {
 function draw() {
   background("white");
 
-
-  // layers
   if (SWITCH_CREATE_IMPEDIMENTS == false) {
     image(underneath_image, 0, 0, underneath_image.width * SCALING_FACTOR, underneath_image.height * SCALING_FACTOR);
   } else {
@@ -118,10 +110,8 @@ function draw() {
   origins.looping_through_days();
   origins.drop_all();
 
-  // hygiene functions
   particles_physical.show();
 
-  // needed - debugging here or - together with impediment mode?
   impediments.show();
 
   if (SWITCH_CREATE_IMPEDIMENTS == false) {
@@ -131,7 +121,6 @@ function draw() {
     origins.show_co2_label();
   }
 
-  // own class! - debugging origins
   if (logging.getLevel() <= 1) {
     origins.debugging_show_origins();
     impediments.drag(mouseX, mouseY);

@@ -1,6 +1,6 @@
 class Origin {
     constructor(position_x, position_y, label) {
-        this.frequency_drop = 5;  // between 1 and 5
+        this.frequency_drop = 5;  // random between 1 and this value
 
         this.framecount = Math.floor((Math.random() * 100) + this.frequency_drop);
         this.position_x = Math.abs(position_x);

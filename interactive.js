@@ -1,6 +1,6 @@
 function keyPressed() {
   if (key === 'P') {
-    console.log("result")
+    console.log("Result:")
     console.log(editor.vertices_text);
     editor.vertices_text = "";
     editor.markers = [];
@@ -8,7 +8,6 @@ function keyPressed() {
 }
 
 function mousePressed() {
-  // let's move those to all objects list
   impediments.clicked(mouseX, mouseY);
 
   if (keyIsPressed) {
@@ -24,7 +23,7 @@ function mouseReleased() {
   impediments.undrag();
 }
 
-// each time window.innerWidth changes 
+// each time window.innerWidth changes
 function windowResized() {
   logging.debug("Window is resized -> resizing canvas.");
   resize_canvas();
