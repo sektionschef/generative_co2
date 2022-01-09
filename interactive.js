@@ -42,8 +42,8 @@ function resize_canvas() {
     SCALING_FACTOR = rescaling_height
   }
 
-  // FULL_SCALE
-  SCALING_FACTOR = 1;
+  // Override for full scale
+  // SCALING_FACTOR = 1;
 
   particles_physical.kill_all();
 
