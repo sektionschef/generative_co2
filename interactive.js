@@ -42,6 +42,9 @@ function resize_canvas() {
     SCALING_FACTOR = rescaling_height
   }
 
+  // FULL_SCALE
+  SCALING_FACTOR = 1;
+
   particles_physical.kill_all();
 
   // reboot - since scaling in physical world is only possible relative to the preceding body.
